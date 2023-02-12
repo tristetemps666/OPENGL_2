@@ -1,8 +1,13 @@
+#include <array>
+#include <cmath>
+#include <vector>
+#include "glm/fwd.hpp"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <glimac/FilePath.hpp>
 #include <glimac/Program.hpp>
+#include <glimac/glm.hpp>
 
 int window_width  = 1280;
 int window_height = 720;
@@ -27,6 +32,31 @@ static void size_callback(GLFWwindow* /*window*/, int width, int height)
 {
     window_width  = width;
     window_height = height;
+}
+[[maybe_unused]] float aspectRatio = 1.f * window_width / window_height;
+
+class Vertex2DColor {
+public:
+    [[maybe_unused]] glm::vec2 position;
+    [[maybe_unused]] glm::vec3 color;
+
+public:
+    Vertex2DColor() = default;
+
+    Vertex2DColor(glm::vec2 pos, glm::vec3 col)
+        : position(pos), color(col) { position.x *= 1 / aspectRatio; };
+};
+
+std::vector<Vertex2DColor> Generate_circle_position(float radius, glm::vec2 center, unsigned int nb_points)
+{
+    std::vector<Vertex2DColor> list_point(nb_points);
+    float                      delta_angle = 360.f / nb_points;
+
+    for (unsigned int i = 0; i < nb_points; i++) {
+        list_point[i].position = glm::vec2(cos(delta_angle * i), sin((delta_angle)*i)) + center;
+    }
+
+    return list_point;
 }
 
 int main(int argc, char* argv[])
@@ -85,22 +115,34 @@ int main(int argc, char* argv[])
     GLuint vbo;
     GLuint vao;
 
-    [[maybe_unused]] float aspectRatio = 1.f * window_width / window_height;
-
     // VBO
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
+    // OLD PART WITHOUT STRUCT
     // x,y,r,g,b
-    GLfloat vertices[] = {-0.5f, -0.5f, 1.f, 0.f, 0.f,
-                          0.5f, -0.5f, 0.f, 1.f, 0.f,
-                          0.f, 0.5f, 0.f, 0.f, 1.f};
+    // GLfloat vertices[] = {-0.5f, -0.5f, 1.f, 0.f, 0.f,
+    //                       0.5f, -0.5f, 0.f, 1.f, 0.f,
+    //                       0.f, 0.5f, 0.f, 0.f, 1.f};
 
-    for (int i = 0; i < 2; i++) {
-        vertices[5 * i] *= 1 / aspectRatio;
-    }
+    // for (int i = 0; i < 2; i++) {
+    //     vertices[5 * i] *= 1 / aspectRatio;
+    // }
 
-    glBufferData(GL_ARRAY_BUFFER, 15 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
+    // PART WITH STRUCT
+    std::vector<Vertex2DColor> triangle_1 = {
+        // first triangle
+        Vertex2DColor(glm::vec2(-0.5, 0.5), glm::vec3(1, 0, 0)),
+        Vertex2DColor(glm::vec2(0.5, 0.5), glm::vec3(0, 1, 0)),
+        Vertex2DColor(glm::vec2(-0.5, -0.5), glm::vec3(0, 0, 1)),
+
+        // second triangle
+        Vertex2DColor(glm::vec2(0.5, 0.5), glm::vec3(0, 1, 0)),
+        Vertex2DColor(glm::vec2(0.5, -0.5), glm::vec3(1, 1, 0)),
+        Vertex2DColor(glm::vec2(-0.5, -0.5), glm::vec3(0, 0, 1)),
+    };
+
+    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(Vertex2DColor), triangle_1.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // VAO
@@ -112,8 +154,8 @@ int main(int argc, char* argv[])
     glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
     glEnableVertexAttribArray(COLOR_ATTR_POSITION);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), 0);
-    glVertexAttribPointer(COLOR_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (const GLvoid*)(2 * sizeof(GLfloat)));
+    glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid*)offsetof(Vertex2DColor, position));
+    glVertexAttribPointer(COLOR_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2DColor), (const GLvoid*)offsetof(Vertex2DColor, color));
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     /* Loop until the user closes the window */
@@ -124,7 +166,7 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT);
 
         glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawArrays(GL_TRIANGLES, 0, 6);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
