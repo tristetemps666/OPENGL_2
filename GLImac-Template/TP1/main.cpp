@@ -119,6 +119,10 @@ int main(int argc, char* argv[])
     glimac::FilePath applicationPath(argv[0]);
     glimac::Program  program = glimac::loadProgram(applicationPath.dirPath() + "TP1/shaders/triangle.vs.glsl",
                                                    applicationPath.dirPath() + "TP1/shaders/triangle.fs.glsl");
+
+    // pass the resolution to the shaders
+    GLint res_loc = glad_glGetProgramResourceLocation(program.getGLId(), GL_UNIFORM, "iResolution");
+    glad_glProgramUniform2f(program.getGLId(), res_loc, window_width, window_height);
     program.use();
 
     // INITIALIZATION :
