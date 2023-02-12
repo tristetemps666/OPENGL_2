@@ -1,6 +1,7 @@
 #include <array>
 #include <cmath>
 #include <vector>
+#include "glm/ext/scalar_constants.hpp"
 #include "glm/fwd.hpp"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
@@ -49,11 +50,21 @@ public:
 
 std::vector<Vertex2DColor> Generate_circle_position(float radius, glm::vec2 center, unsigned int nb_points)
 {
-    std::vector<Vertex2DColor> list_point(nb_points);
-    float                      delta_angle = 360.f / nb_points;
+    std::vector<Vertex2DColor> list_point;
+    float                      delta_angle = 2 * glm::pi<float>() / nb_points;
+
+    auto get_pos_and_Color = [delta_angle](glm::vec2 center, float radius, unsigned int i) {
+        glm::vec2 pos_i = radius * glm::vec2(cos(delta_angle * i), sin((delta_angle)*i)) + center;
+        glm::vec3 col_i = glm::vec3(pos_i, 1.f);
+        return Vertex2DColor(pos_i, col_i);
+    };
 
     for (unsigned int i = 0; i < nb_points; i++) {
-        list_point[i].position = glm::vec2(cos(delta_angle * i), sin((delta_angle)*i)) + center;
+        // glm::vec2 pos_i = radius * glm::vec2(cos(delta_angle * i), sin((delta_angle)*i)) + center;
+        // glm::vec3 col_i = glm::vec3(pos_i, 1.f);
+        list_point.push_back(get_pos_and_Color(center, radius, i));
+        list_point.push_back(Vertex2DColor(center, get_pos_and_Color(center, radius, i).color));
+        list_point.push_back(get_pos_and_Color(center, radius, i + 1));
     }
 
     return list_point;
@@ -130,7 +141,7 @@ int main(int argc, char* argv[])
     // }
 
     // PART WITH STRUCT
-    std::vector<Vertex2DColor> triangle_1 = {
+    std::vector<Vertex2DColor> square = {
         // first triangle
         Vertex2DColor(glm::vec2(-0.5, 0.5), glm::vec3(1, 0, 0)),
         Vertex2DColor(glm::vec2(0.5, 0.5), glm::vec3(0, 1, 0)),
@@ -142,7 +153,11 @@ int main(int argc, char* argv[])
         Vertex2DColor(glm::vec2(-0.5, -0.5), glm::vec3(0, 0, 1)),
     };
 
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(Vertex2DColor), triangle_1.data(), GL_STATIC_DRAW);
+    auto circle = Generate_circle_position(1, glm::vec2(0, 0), 100);
+
+    // glBufferData(GL_ARRAY_BUFFER, square.size() * sizeof(Vertex2DColor), square.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, circle.size() * sizeof(Vertex2DColor), circle.data(), GL_STATIC_DRAW);
+
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // VAO
@@ -166,7 +181,7 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT);
 
         glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glDrawArrays(GL_TRIANGLES, 0, circle.size());
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
