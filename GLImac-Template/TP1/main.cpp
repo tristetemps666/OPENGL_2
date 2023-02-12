@@ -29,8 +29,10 @@ static void size_callback(GLFWwindow* /*window*/, int width, int height)
     window_height = height;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+    (void)argc;
+
     /* Initialize the library */
     if (!glfwInit()) {
         return -1;
@@ -65,32 +67,53 @@ int main()
     glfwSetCursorPosCallback(window, &cursor_position_callback);
     glfwSetWindowSizeCallback(window, &size_callback);
 
+    // std::string triangle_fs = "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/TP1/shaders/triangle.fs.glsl";
+    // std::string triangle_vs = "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/TP1/shaders/triangle.vs.glsl";
+
+    // glimac::FilePath applicationPath(argv[0]);
+    // glimac::Program  program = glimac::loadProgram(triangle_vs,
+    //                                                triangle_fs);
+    // program.use();
+
+    glimac::FilePath applicationPath(argv[0]);
+    glimac::Program  program = glimac::loadProgram(applicationPath.dirPath() + "TP1/shaders/triangle.vs.glsl",
+                                                   applicationPath.dirPath() + "TP1/shaders/triangle.fs.glsl");
+    program.use();
+
     // INITIALIZATION :
 
     GLuint vbo;
     GLuint vao;
-    float  aspectRatio = 1. * window_width / window_height;
+
+    [[maybe_unused]] float aspectRatio = 1.f * window_width / window_height;
 
     // VBO
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-    GLfloat vertices[] = {-0.5f, -0.5f, 0.5f, -0.5f, 0.0f, 0.5f};
+    // x,y,r,g,b
+    GLfloat vertices[] = {-0.5f, -0.5f, 1.f, 0.f, 0.f,
+                          0.5f, -0.5f, 0.f, 1.f, 0.f,
+                          0.f, 0.5f, 0.f, 0.f, 1.f};
 
-    for (int i = 0; i < 6; i += 2)
-        vertices[i] *= 1 / aspectRatio;
+    for (int i = 0; i < 2; i++) {
+        vertices[5 * i] *= 1 / aspectRatio;
+    }
 
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 15 * sizeof(GLfloat), vertices, GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // VAO
-    const GLuint VERTEX_ATTR_POSITION = 0;
+    const GLuint VERTEX_ATTR_POSITION = 3;
+    const GLuint COLOR_ATTR_POSITION  = 8;
+
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
-
+    glEnableVertexAttribArray(COLOR_ATTR_POSITION);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), 0);
+    glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), 0);
+    glVertexAttribPointer(COLOR_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(GLfloat), (const GLvoid*)(2 * sizeof(GLfloat)));
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     /* Loop until the user closes the window */

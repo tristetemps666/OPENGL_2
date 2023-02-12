@@ -7,4 +7,5 @@ out vec3 fFragColor;
 void main()
 {
     fFragColor = vColor;
+    // fFragColor = gl_Position.xyz;
 }

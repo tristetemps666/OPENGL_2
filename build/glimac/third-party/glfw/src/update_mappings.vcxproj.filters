@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\a40a310804bebaf663aeaa903fd8f741\update_mappings.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\glimac\third-party\glfw\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\glimac\third-party\glfw\src\mappings.h.in">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\glimac\third-party\glfw\CMake\GenerateMappings.cmake" />
+    <None Include="C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\glimac\third-party\glfw\src\CMakeFiles\update_mappings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{45D84E7C-F180-31AB-98DF-02421C7C4F7A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B92E69CE-6269-3F84-A966-F3443EE5639D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

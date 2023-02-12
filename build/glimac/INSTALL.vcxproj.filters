@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\df6cdaaed4c4d54cd10ec44814d36fe0\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{45D84E7C-F180-31AB-98DF-02421C7C4F7A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,10 @@
+^C:\USERS\DEBEA\DOCUMENTS\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\BUILD\CMAKEFILES\1A647DA05E6020935E2F5E4E9CC93E7D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template -BC:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/SimpleGlimac.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
