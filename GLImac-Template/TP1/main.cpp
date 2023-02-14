@@ -1,5 +1,6 @@
 #include <array>
 #include <cmath>
+#include <utility>
 #include <vector>
 #include "glm/ext/scalar_constants.hpp"
 #include "glm/fwd.hpp"
@@ -50,7 +51,7 @@ public:
 
 std::vector<Vertex2DColor> Generate_circle_position(float radius, glm::vec2 center, unsigned int nb_points)
 {
-    std::vector<Vertex2DColor> list_point;
+    std::vector<Vertex2DColor> list_vertices;
     float                      delta_angle = 2 * glm::pi<float>() / nb_points;
 
     auto get_pos_and_Color = [delta_angle](glm::vec2 center, float radius, unsigned int i) {
@@ -59,15 +60,34 @@ std::vector<Vertex2DColor> Generate_circle_position(float radius, glm::vec2 cent
         return Vertex2DColor(pos_i, col_i);
     };
 
-    for (unsigned int i = 0; i < nb_points; i++) {
-        // glm::vec2 pos_i = radius * glm::vec2(cos(delta_angle * i), sin((delta_angle)*i)) + center;
-        // glm::vec3 col_i = glm::vec3(pos_i, 1.f);
-        list_point.push_back(get_pos_and_Color(center, radius, i));
-        list_point.push_back(Vertex2DColor(center, get_pos_and_Color(center, radius, i).color));
-        list_point.push_back(get_pos_and_Color(center, radius, i + 1));
+    list_vertices.push_back(Vertex2DColor(center, glm::vec3(1, 1, 1)));
+    for (unsigned int i = 0; i < nb_points; i++)
+        list_vertices.push_back(get_pos_and_Color(center, radius, i));
+
+    return list_vertices;
+}
+
+std::vector<glm::uint32_t> Generate_circle_indices(unsigned int nb_points)
+{
+    std::vector<glm::uint32_t> list_indices;
+    for (unsigned int i = 0; i < nb_points - 1; i++) {
+        list_indices.push_back(i + 1);
+        list_indices.push_back(0);
+        list_indices.push_back((i + 2));
     }
 
-    return list_point;
+    list_indices.push_back(nb_points);
+    list_indices.push_back(0);
+    list_indices.push_back(1);
+
+    return list_indices;
+}
+
+std::pair<std::vector<Vertex2DColor>, std::vector<glm::uint32_t>> Generate_circle_data(float radius, glm::vec2 center, unsigned int nb_points)
+{
+    return std::pair<std::vector<Vertex2DColor>, std::vector<glm::uint32_t>>(
+        Generate_circle_position(radius, center, nb_points),
+        Generate_circle_indices(nb_points));
 }
 
 int main(int argc, char* argv[])
@@ -108,14 +128,6 @@ int main(int argc, char* argv[])
     glfwSetCursorPosCallback(window, &cursor_position_callback);
     glfwSetWindowSizeCallback(window, &size_callback);
 
-    // std::string triangle_fs = "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/TP1/shaders/triangle.fs.glsl";
-    // std::string triangle_vs = "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/TP1/shaders/triangle.vs.glsl";
-
-    // glimac::FilePath applicationPath(argv[0]);
-    // glimac::Program  program = glimac::loadProgram(triangle_vs,
-    //                                                triangle_fs);
-    // program.use();
-
     glimac::FilePath applicationPath(argv[0]);
     glimac::Program  program = glimac::loadProgram(applicationPath.dirPath() + "TP1/shaders/triangle.vs.glsl",
                                                    applicationPath.dirPath() + "TP1/shaders/triangle.fs.glsl");
@@ -132,37 +144,36 @@ int main(int argc, char* argv[])
 
     // VBO
     glGenBuffers(1, &vbo);
+    // glBindBuffer(GL_ARRAY_BUFFER, vbo); // old part without buffer index
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-    // OLD PART WITHOUT STRUCT
-    // x,y,r,g,b
-    // GLfloat vertices[] = {-0.5f, -0.5f, 1.f, 0.f, 0.f,
-    //                       0.5f, -0.5f, 0.f, 1.f, 0.f,
-    //                       0.f, 0.5f, 0.f, 0.f, 1.f};
-
-    // for (int i = 0; i < 2; i++) {
-    //     vertices[5 * i] *= 1 / aspectRatio;
-    // }
 
     // PART WITH STRUCT
     std::vector<Vertex2DColor> square = {
         // first triangle
-        Vertex2DColor(glm::vec2(-0.5, 0.5), glm::vec3(1, 0, 0)),
-        Vertex2DColor(glm::vec2(0.5, 0.5), glm::vec3(0, 1, 0)),
-        Vertex2DColor(glm::vec2(-0.5, -0.5), glm::vec3(0, 0, 1)),
-
-        // second triangle
-        Vertex2DColor(glm::vec2(0.5, 0.5), glm::vec3(0, 1, 0)),
-        Vertex2DColor(glm::vec2(0.5, -0.5), glm::vec3(1, 1, 0)),
-        Vertex2DColor(glm::vec2(-0.5, -0.5), glm::vec3(0, 0, 1)),
+        Vertex2DColor(glm::vec2(-0.5, -0.5), glm::vec3(1, 0, 0)), // top left
+        Vertex2DColor(glm::vec2(0.5, -0.5), glm::vec3(0, 1, 0)),  // top right
+        Vertex2DColor(glm::vec2(0.5, 0.5), glm::vec3(0, 0, 1)),   // bottom left
+        Vertex2DColor(glm::vec2(-0.5, 0.5), glm::vec3(1, 1, 0)),  // bottom right
     };
 
-    auto circle = Generate_circle_position(1, glm::vec2(0, 0), 100);
+    auto circle_data = Generate_circle_data(1, glm::vec2(0, 0), 100);
 
-    // glBufferData(GL_ARRAY_BUFFER, square.size() * sizeof(Vertex2DColor), square.data(), GL_STATIC_DRAW);
-    glBufferData(GL_ARRAY_BUFFER, circle.size() * sizeof(Vertex2DColor), circle.data(), GL_STATIC_DRAW);
+    // auto circle = Generate_circle_position(1, glm::vec2(0, 0), 100); // old version
 
+    glBufferData(GL_ARRAY_BUFFER, square.size() * sizeof(Vertex2DColor), square.data(), GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, circle_data.first.size() * sizeof(Vertex2DColor), circle_data.first.data(), GL_STATIC_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+    // IBO
+    GLuint ibo;
+    glGenBuffers(1, &ibo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    std::vector<glm::uint32_t> indices = {
+        0, 1, 2, 0, 2, 3};
+
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(circle_data.second) * circle_data.second.size(), circle_data.second.data(), GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     // VAO
     const GLuint VERTEX_ATTR_POSITION = 3;
@@ -170,6 +181,7 @@ int main(int argc, char* argv[])
 
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
     glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
     glEnableVertexAttribArray(COLOR_ATTR_POSITION);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -185,7 +197,9 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT);
 
         glBindVertexArray(vao);
-        glDrawArrays(GL_TRIANGLES, 0, circle.size());
+        // glDrawArrays(GL_TRIANGLES, 0, circle.size()); // Circle
+        // glDrawArrays(GL_TRIANGLES, 0, circle.size()); // square
+        glDrawElements(GL_TRIANGLES, circle_data.second.size(), GL_UNSIGNED_INT, 0);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

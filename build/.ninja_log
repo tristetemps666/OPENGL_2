@@ -1,5 +1,5 @@
 # ninja log v5
-1	19	0	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/cmake.verify_globs	a820f6ab270a33c
+1	26	0	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/cmake.verify_globs	a820f6ab270a33c
 20	738	6978989730634636	glimac/third-party/glfw/src/CMakeFiles/glfw.dir/vulkan.c.obj	aff6c5e46f0f0a
 45	722	6978989730599980	glimac/third-party/glfw/src/CMakeFiles/glfw.dir/win32_init.c.obj	1ac43429a96eb768
 1233	1326	6978989736738894	glimac/glad.lib	6d36619486927762
@@ -10,7 +10,7 @@
 49	761	6978989730889608	glimac/third-party/glfw/src/CMakeFiles/glfw.dir/win32_monitor.c.obj	3c324be00c6630f0
 34	761	6978989730909093	glimac/third-party/glfw/src/CMakeFiles/glfw.dir/monitor.c.obj	abaa5ac3e6bebe24
 2430	2479	6662804690000000	DUMMY_assets/models/cornell_box.obj_TP1_exe	7c9ec2d279b8197
-605	723	6979084141125499	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/bin/Debug/TP1_exe.exe	b67536cf369c520f
+972	1166	6980759945330935	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/bin/Debug/TP1_exe.exe	b67536cf369c520f
 27	753	6978989730863575	glimac/third-party/glfw/src/CMakeFiles/glfw.dir/init.c.obj	a3333d4c89e3f31
 2396	2423	6978989747794655	glimac/glimac.lib	7aed664e792c7756
 52	768	6978989731055882	glimac/third-party/glfw/src/CMakeFiles/glfw.dir/win32_joystick.c.obj	f72b04c3db75f770
@@ -31,15 +31,15 @@
 3	2091	6978989744367154	glimac/CMakeFiles/glimac.dir/src/Cone.cpp.obj	8ecdd933e31e1fb8
 7	2396	6978989747404706	glimac/CMakeFiles/glimac.dir/src/Image.cpp.obj	f1c9a24b0c418cad
 2425	2475	6662804690000000	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_assets/models/cube.mtl_TP1_exe	f4e885653fe2843e
-2	35	6979087960653469	DUMMY_TP1/shaders/triangle.fs.glsl_TP1_exe	cb54dee19984caaf
-2	35	6979087960653469	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_TP1/shaders/triangle.fs.glsl_TP1_exe	cb54dee19984caaf
+2	36	6979088272193981	DUMMY_TP1/shaders/triangle.fs.glsl_TP1_exe	cb54dee19984caaf
+2	36	6979088272193981	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_TP1/shaders/triangle.fs.glsl_TP1_exe	cb54dee19984caaf
 2428	2477	6662804690000000	DUMMY_assets/models/cube.obj_TP1_exe	1fb4d281582fb3b
 2428	2477	6662804690000000	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_assets/models/cube.obj_TP1_exe	1fb4d281582fb3b
 2435	2480	6662804690000000	DUMMY_assets/models/cornell_box.mtl_TP1_exe	14d12c6cf8663302
 2435	2480	6662804690000000	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_assets/models/cornell_box.mtl_TP1_exe	14d12c6cf8663302
 3	35	6979074366611758	DUMMY_TP1/shaders/triangle.vs.glsl_TP1_exe	6362029344339f9c
 3	35	6979074366611758	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_TP1/shaders/triangle.vs.glsl_TP1_exe	6362029344339f9c
-2	604	6979084140310900	CMakeFiles/TP1_exe.dir/TP1/main.cpp.obj	96055756cd6a3794
-1	19	0	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/cmake.verify_globs	a820f6ab270a33c
-2	36	6979088272193981	DUMMY_TP1/shaders/triangle.fs.glsl_TP1_exe	cb54dee19984caaf
-2	36	6979088272193981	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_TP1/shaders/triangle.fs.glsl_TP1_exe	cb54dee19984caaf
+3	971	6980759943666210	CMakeFiles/TP1_exe.dir/TP1/main.cpp.obj	96055756cd6a3794
+3	41	0	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/cmake.verify_globs	a820f6ab270a33c
+5	1020	6980760476802266	CMakeFiles/TP1_exe.dir/TP1/main.cpp.obj	96055756cd6a3794
+1021	1222	6980760478355055	C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/bin/Debug/TP1_exe.exe	b67536cf369c520f
