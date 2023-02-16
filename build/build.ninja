@@ -84,7 +84,7 @@ build C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Te
 #############################################
 # Order-only phony target for TP2_exe
 
-build cmake_object_order_depends_target_TP2_exe: phony || C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\bin\Debug\TP1_exe.exe DUMMY_TP2\shaders\shader.fs.glsl_TP2_exe DUMMY_assets\models\cornell_box.mtl_TP1_exe DUMMY_assets\models\cornell_box.obj_TP1_exe DUMMY_assets\models\cube.mtl_TP1_exe DUMMY_assets\models\cube.obj_TP1_exe cmake_object_order_depends_target_glad cmake_object_order_depends_target_glfw cmake_object_order_depends_target_glimac
+build cmake_object_order_depends_target_TP2_exe: phony || C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\bin\Debug\TP1_exe.exe DUMMY_TP2\shaders\color2D.fs.glsl_TP2_exe DUMMY_TP2\shaders\color2D.vs.glsl_TP2_exe DUMMY_assets\models\cornell_box.mtl_TP1_exe DUMMY_assets\models\cornell_box.obj_TP1_exe DUMMY_assets\models\cube.mtl_TP1_exe DUMMY_assets\models\cube.obj_TP1_exe cmake_object_order_depends_target_glad cmake_object_order_depends_target_glfw cmake_object_order_depends_target_glimac
 
 build CMakeFiles\TP2_exe.dir\TP2\main.cpp.obj: CXX_COMPILER__TP2_exe_Debug C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\TP2\main.cpp || cmake_object_order_depends_target_TP2_exe
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /WX /W3
@@ -483,11 +483,20 @@ build DUMMY_assets\models\cube.obj_TP1_exe | ${cmake_ninja_workdir}DUMMY_assets\
 
 
 #############################################
-# Custom command for DUMMY_TP2\shaders\shader.fs.glsl_TP2_exe
+# Custom command for DUMMY_TP2\shaders\color2D.fs.glsl_TP2_exe
 
-build DUMMY_TP2\shaders\shader.fs.glsl_TP2_exe | ${cmake_ninja_workdir}DUMMY_TP2\shaders\shader.fs.glsl_TP2_exe: CUSTOM_COMMAND C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\TP2\shaders\shader.fs.glsl || C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\bin\Debug\TP1_exe.exe glimac\glad.lib glimac\glimac.lib glimac\third-party\glfw\src\glfw3.lib
-  COMMAND = cmd.exe /C "cd /D C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build && "C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_TP2/shaders/shader.fs.glsl_TP2_exe && "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/TP2/shaders/shader.fs.glsl C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/bin/Debug/TP2/shaders/shader.fs.glsl"
-  DESC = Copying "TP2/shaders/shader.fs.glsl"
+build DUMMY_TP2\shaders\color2D.fs.glsl_TP2_exe | ${cmake_ninja_workdir}DUMMY_TP2\shaders\color2D.fs.glsl_TP2_exe: CUSTOM_COMMAND C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\TP2\shaders\color2D.fs.glsl || C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\bin\Debug\TP1_exe.exe glimac\glad.lib glimac\glimac.lib glimac\third-party\glfw\src\glfw3.lib
+  COMMAND = cmd.exe /C "cd /D C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build && "C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_TP2/shaders/color2D.fs.glsl_TP2_exe && "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/TP2/shaders/color2D.fs.glsl C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/bin/Debug/TP2/shaders/color2D.fs.glsl"
+  DESC = Copying "TP2/shaders/color2D.fs.glsl"
+  restat = 1
+
+
+#############################################
+# Custom command for DUMMY_TP2\shaders\color2D.vs.glsl_TP2_exe
+
+build DUMMY_TP2\shaders\color2D.vs.glsl_TP2_exe | ${cmake_ninja_workdir}DUMMY_TP2\shaders\color2D.vs.glsl_TP2_exe: CUSTOM_COMMAND C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\TP2\shaders\color2D.vs.glsl || C$:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\GLImac-Template\bin\Debug\TP1_exe.exe glimac\glad.lib glimac\glimac.lib glimac\third-party\glfw\src\glfw3.lib
+  COMMAND = cmd.exe /C "cd /D C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build && "C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/DUMMY_TP2/shaders/color2D.vs.glsl_TP2_exe && "C:\Program Files\CMake\bin\cmake.exe" -E copy C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/TP2/shaders/color2D.vs.glsl C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/GLImac-Template/bin/Debug/TP2/shaders/color2D.vs.glsl"
+  DESC = Copying "TP2/shaders/color2D.vs.glsl"
   restat = 1
 
 

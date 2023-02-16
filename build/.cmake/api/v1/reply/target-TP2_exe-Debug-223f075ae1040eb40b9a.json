@@ -288,15 +288,16 @@
 			[
 				1,
 				2,
-				4
+				3,
+				5
 			]
 		},
 		{
 			"name" : "Object Files",
 			"sourceIndexes" : 
 			[
-				3,
-				5
+				4,
+				6
 			]
 		}
 	],
@@ -310,7 +311,12 @@
 		},
 		{
 			"backtrace" : 13,
-			"path" : "TP2/shaders/shader.fs.glsl",
+			"path" : "TP2/shaders/color2D.fs.glsl",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 13,
+			"path" : "TP2/shaders/color2D.vs.glsl",
 			"sourceGroupIndex" : 1
 		},
 		{
