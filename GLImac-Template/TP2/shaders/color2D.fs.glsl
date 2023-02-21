@@ -8,7 +8,7 @@ out vec3 fFragColor;
 
 vec2 get_normalized_uv()
 {
-    return (gl_FragCoord.xy / iResolution.xy - 0.5f) / vec2(aspecRatio, 1f);
+    return (gl_FragCoord.xy / iResolution.xy - 0.5) / vec2(aspecRatio, 1.);
 }
 
 void main()
@@ -17,6 +17,6 @@ void main()
     vec2 uv = get_normalized_uv();
     vec2 gv = fract(uv * 10);
 
-    fFragColor = vec3(gv.x, gv.y, 0f);
+    fFragColor = vec3(gv.x, gv.y, 0.);
     // fFragColor = gl_Position.xyz;
 }

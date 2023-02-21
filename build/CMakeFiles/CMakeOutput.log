@@ -1,294 +1,409 @@
-The system is: Windows - 10.0.19044 - AMD64
+The system is: Linux - 5.15.0-57-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/clang-cl.exe 
+Compiler: /usr/bin/clang-14 
 Build flags: 
 Id flags:  
 
 The output was:
 0
-Microsoft (R) Build Engine version 16.11.2+f32259642 pour .NET Framework
-Copyright (C) Microsoft Corporation. Tous droits réservés.
-
-La génération a démarré 10/02/2023 15:35:58.
-Projet "C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\3.25.1\CompilerIdC\CompilerIdC.vcxproj" sur le noud 1 (cibles par défaut).
-PrepareForBuild:
-  Création du répertoire "Debug\".
-  Création du répertoire "Debug\CompilerIdC.tlog\".
-InitializeBuildStatus:
-  Création de "Debug\CompilerIdC.tlog\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
-ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /external:W0 /Gd /TC /analyze- /FC /errorReport:queue CMakeCCompilerId.c
-  CMakeCCompilerId.c
-Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCCompilerId.obj
-  CompilerIdC.vcxproj -> C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\3.25.1\CompilerIdC\CompilerIdC.exe
-PostBuildEvent:
-  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
-  :VCEnd
-  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe
-FinalizeBuildStatus:
-  Suppression du fichier "Debug\CompilerIdC.tlog\unsuccessfulbuild".
-  Mise à jour de l'horodatage "Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate".
-Génération du projet "C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\3.25.1\CompilerIdC\CompilerIdC.vcxproj" terminée (cibles par défaut).
-
-La génération a réussi.
-    0 Avertissement(s)
-    0 Erreur(s)
-
-Temps écoulé 00:00:00.97
 
 
-Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
-
-The C compiler identification is MSVC, found in "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/3.25.1/CompilerIdC/CompilerIdC.exe"
+The C compiler identification is Clang, found in "/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/3.22.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/clang-cl.exe 
+Compiler: /usr/bin/clang++-14 
 Build flags: 
 Id flags:  
 
 The output was:
 0
-Microsoft (R) Build Engine version 16.11.2+f32259642 pour .NET Framework
-Copyright (C) Microsoft Corporation. Tous droits réservés.
-
-La génération a démarré 10/02/2023 15:35:59.
-Projet "C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\3.25.1\CompilerIdCXX\CompilerIdCXX.vcxproj" sur le noud 1 (cibles par défaut).
-PrepareForBuild:
-  Création du répertoire "Debug\".
-  Création du répertoire "Debug\CompilerIdCXX.tlog\".
-InitializeBuildStatus:
-  Création de "Debug\CompilerIdCXX.tlog\unsuccessfulbuild", car "AlwaysCreate" a été spécifié.
-ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /Oy- /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc142.pdb" /external:W0 /Gd /TP /analyze- /FC /errorReport:queue CMakeCXXCompilerId.cpp
-  CMakeCXXCompilerId.cpp
-Link:
-  C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X86 /SAFESEH Debug\CMakeCXXCompilerId.obj
-  CompilerIdCXX.vcxproj -> C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\3.25.1\CompilerIdCXX\CompilerIdCXX.exe
-PostBuildEvent:
-  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
-  :VCEnd
-  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx86\x86\cl.exe
-FinalizeBuildStatus:
-  Suppression du fichier "Debug\CompilerIdCXX.tlog\unsuccessfulbuild".
-  Mise à jour de l'horodatage "Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate".
-Génération du projet "C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\3.25.1\CompilerIdCXX\CompilerIdCXX.vcxproj" terminée (cibles par défaut).
-
-La génération a réussi.
-    0 Avertissement(s)
-    0 Erreur(s)
-
-Temps écoulé 00:00:00.65
 
 
-Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
-
-The CXX compiler identification is MSVC, found in "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/3.25.1/CompilerIdCXX/CompilerIdCXX.exe"
+The CXX compiler identification is Clang, found in "/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/3.22.1/CompilerIdCXX/a.out"
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/CMakeScratch/TryCompile-ugw14o
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_1acf7.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.2+f32259642 pour .NET Framework
-Copyright (C) Microsoft Corporation. Tous droits réservés.
-
-  Compilateur d'optimisation Microsoft (R) C/C++ version 19.29.30147 pour x86
-  Copyright (C) Microsoft Corporation. Tous droits réservés.
-  CMakeCCompilerABI.c
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_1acf7.dir\Debug\\" /Fd"cmTC_1acf7.dir\Debug\vc142.pdb" /external:W3 /Gd /TC /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeCCompilerABI.c"
-  cmTC_1acf7.vcxproj -> C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\CMakeScratch\TryCompile-ugw14o\Debug\cmTC_1acf7.exe
+Run Build Command(s):/usr/bin/ninja cmTC_e3aea && [1/2] Building C object CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o
+Ubuntu clang version 14.0.0-1ubuntu1
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ (in-process)
+ "/usr/lib/llvm-14/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -dependency-file CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdebug-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c
+clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/llvm-14/lib/clang/14.0.0/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+[2/2] Linking C executable cmTC_e3aea
+Ubuntu clang version 14.0.0-1ubuntu1
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ "/usr/bin/ld" -pie -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e3aea /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-14/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o /lib/x86_64-linux-gnu/crtn.o
 
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/llvm-14/lib/clang/14.0.0/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/lib/llvm-14/lib/clang/14.0.0/include] ==> [/usr/lib/llvm-14/lib/clang/14.0.0/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/lib/llvm-14/lib/clang/14.0.0/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/ninja cmTC_e3aea && [1/2] Building C object CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o]
+  ignore line: [Ubuntu clang version 14.0.0-1ubuntu1]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/lib/llvm-14/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -dependency-file CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o.d -MT CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o -sys-header-deps -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdebug-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.22/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/llvm-14/lib/clang/14.0.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking C executable cmTC_e3aea]
+  ignore line: [Ubuntu clang version 14.0.0-1ubuntu1]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/usr/bin/ld" -pie -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e3aea /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-14/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_e3aea] ==> ignore
+    arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/llvm-14/bin/../lib] ==> dir [/usr/lib/llvm-14/bin/../lib]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_e3aea.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  collapse obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+  collapse obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/llvm-14/bin/../lib] ==> [/usr/lib/llvm-14/lib]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit objs: [/lib/x86_64-linux-gnu/Scrt1.o;/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/usr/lib/llvm-14/lib;/lib;/usr/lib]
+  implicit fwks: []
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/CMakeScratch/TryCompile-q2axd7
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/MSBuild/Current/Bin/MSBuild.exe cmTC_2e55a.vcxproj /p:Configuration=Debug /p:Platform=win32 /p:VisualStudioVersion=16.0 /v:m && Microsoft (R) Build Engine version 16.11.2+f32259642 pour .NET Framework
-Copyright (C) Microsoft Corporation. Tous droits réservés.
-
-  Compilateur d'optimisation Microsoft (R) C/C++ version 19.29.30147 pour x86
-  Copyright (C) Microsoft Corporation. Tous droits réservés.
-  CMakeCXXCompilerABI.cpp
-  cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /Oy- /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_2e55a.dir\Debug\\" /Fd"cmTC_2e55a.dir\Debug\vc142.pdb" /external:W3 /Gd /TP /analyze- /errorReport:queue "C:\Program Files\CMake\share\cmake-3.25\Modules\CMakeCXXCompilerABI.cpp"
-  cmTC_2e55a.vcxproj -> C:\Users\debea\Documents\IMAC\IMAC_2\S4\PROG_GRAPHIQUE\OPENGL_2\build\CMakeFiles\CMakeScratch\TryCompile-q2axd7\Debug\cmTC_2e55a.exe
-
-
-
-The system is: Windows - 10.0.19044 - AMD64
-Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/clang-cl.exe 
-Build flags: 
-Id flags: -c 
-
-The output was:
-0
-
-
-Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
-
-The C compiler identification is Clang, found in "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/3.25.1/CompilerIdC/CMakeCCompilerId.obj"
-
-Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/Llvm/bin/clang-cl.exe 
-Build flags: 
-Id flags: -c 
-
-The output was:
-0
-
-
-Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
-
-The CXX compiler identification is Clang, found in "C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/3.25.1/CompilerIdCXX/CMakeCXXCompilerId.obj"
-
-Detecting C compiler ABI info compiled with the following output:
-Change Dir: C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/CMakeScratch/TryCompile-2nz718
-
-Run Build Command(s):C:/PROGRA~2/MICROS~4/2019/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe cmTC_9c94e && [1/2] Building C object CMakeFiles\cmTC_9c94e.dir\CMakeCCompilerABI.c.obj
-[2/2] Linking C executable cmTC_9c94e.exe
+Run Build Command(s):/usr/bin/ninja cmTC_72514 && [1/2] Building CXX object CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o
+Ubuntu clang version 14.0.0-1ubuntu1
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ (in-process)
+ "/usr/lib/llvm-14/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -dependency-file CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+ignoring nonexistent directory "/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11
+ /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11
+ /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward
+ /usr/lib/llvm-14/lib/clang/14.0.0/include
+ /usr/local/include
+ /usr/include/x86_64-linux-gnu
+ /usr/include
+End of search list.
+[2/2] Linking CXX executable cmTC_72514
+Ubuntu clang version 14.0.0-1ubuntu1
+Target: x86_64-pc-linux-gnu
+Thread model: posix
+InstalledDir: /usr/bin
+Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+ "/usr/bin/ld" -pie -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_72514 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-14/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o /lib/x86_64-linux-gnu/crtn.o
 
 
 
-Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/CMakeScratch/TryCompile-vr3i33
-
-Run Build Command(s):C:/PROGRA~2/MICROS~4/2019/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe cmTC_eb042 && [1/2] Building CXX object CMakeFiles\cmTC_eb042.dir\CMakeCXXCompilerABI.cpp.obj
-[2/2] Linking CXX executable cmTC_eb042.exe
-
-
-
-
-
-Detecting CXX [-std:c++14] compiler features compiled with the following output:
-Change Dir: C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/CMakeScratch/TryCompile-rfxygl
-
-Run Build Command(s):C:/PROGRA~2/MICROS~4/2019/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe cmTC_deb84 && [1/2] Building CXX object CMakeFiles\cmTC_deb84.dir\feature_tests.cxx.obj
-[2/2] Linking CXX executable cmTC_deb84.exe
-
-
-
-    Feature record: CXX_FEATURE:1cxx_template_template_parameters
-    Feature record: CXX_FEATURE:1cxx_alias_templates
-    Feature record: CXX_FEATURE:1cxx_alignas
-    Feature record: CXX_FEATURE:1cxx_alignof
-    Feature record: CXX_FEATURE:1cxx_attributes
-    Feature record: CXX_FEATURE:1cxx_auto_type
-    Feature record: CXX_FEATURE:1cxx_constexpr
-    Feature record: CXX_FEATURE:1cxx_decltype
-    Feature record: CXX_FEATURE:1cxx_default_function_template_args
-    Feature record: CXX_FEATURE:1cxx_defaulted_functions
-    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
-    Feature record: CXX_FEATURE:1cxx_delegating_constructors
-    Feature record: CXX_FEATURE:1cxx_deleted_functions
-    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
-    Feature record: CXX_FEATURE:1cxx_explicit_conversions
-    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
-    Feature record: CXX_FEATURE:1cxx_extern_templates
-    Feature record: CXX_FEATURE:1cxx_final
-    Feature record: CXX_FEATURE:1cxx_func_identifier
-    Feature record: CXX_FEATURE:1cxx_generalized_initializers
-    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
-    Feature record: CXX_FEATURE:1cxx_inline_namespaces
-    Feature record: CXX_FEATURE:1cxx_lambdas
-    Feature record: CXX_FEATURE:1cxx_local_type_template_args
-    Feature record: CXX_FEATURE:1cxx_long_long_type
-    Feature record: CXX_FEATURE:1cxx_noexcept
-    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
-    Feature record: CXX_FEATURE:1cxx_nullptr
-    Feature record: CXX_FEATURE:1cxx_override
-    Feature record: CXX_FEATURE:1cxx_range_for
-    Feature record: CXX_FEATURE:1cxx_raw_string_literals
-    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
-    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
-    Feature record: CXX_FEATURE:1cxx_rvalue_references
-    Feature record: CXX_FEATURE:1cxx_sizeof_member
-    Feature record: CXX_FEATURE:1cxx_static_assert
-    Feature record: CXX_FEATURE:1cxx_strong_enums
-    Feature record: CXX_FEATURE:1cxx_thread_local
-    Feature record: CXX_FEATURE:1cxx_trailing_return_types
-    Feature record: CXX_FEATURE:1cxx_unicode_literals
-    Feature record: CXX_FEATURE:1cxx_uniform_initialization
-    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
-    Feature record: CXX_FEATURE:1cxx_user_literals
-    Feature record: CXX_FEATURE:1cxx_variadic_macros
-    Feature record: CXX_FEATURE:1cxx_variadic_templates
-    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
-    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
-    Feature record: CXX_FEATURE:1cxx_binary_literals
-    Feature record: CXX_FEATURE:1cxx_contextual_conversions
-    Feature record: CXX_FEATURE:1cxx_decltype_auto
-    Feature record: CXX_FEATURE:1cxx_digit_separators
-    Feature record: CXX_FEATURE:1cxx_generic_lambdas
-    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
-    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
-    Feature record: CXX_FEATURE:1cxx_return_type_deduction
-    Feature record: CXX_FEATURE:1cxx_variable_templates
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11]
+    add: [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11]
+    add: [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward]
+    add: [/usr/lib/llvm-14/lib/clang/14.0.0/include]
+    add: [/usr/local/include]
+    add: [/usr/include/x86_64-linux-gnu]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11] ==> [/usr/include/c++/11]
+  collapse include dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11] ==> [/usr/include/x86_64-linux-gnu/c++/11]
+  collapse include dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward] ==> [/usr/include/c++/11/backward]
+  collapse include dir [/usr/lib/llvm-14/lib/clang/14.0.0/include] ==> [/usr/lib/llvm-14/lib/clang/14.0.0/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include/x86_64-linux-gnu] ==> [/usr/include/x86_64-linux-gnu]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/usr/include/c++/11;/usr/include/x86_64-linux-gnu/c++/11;/usr/include/c++/11/backward;/usr/lib/llvm-14/lib/clang/14.0.0/include;/usr/local/include;/usr/include/x86_64-linux-gnu;/usr/include]
 
 
-Detecting CXX [] compiler features compiled with the following output:
-Change Dir: C:/Users/debea/Documents/IMAC/IMAC_2/S4/PROG_GRAPHIQUE/OPENGL_2/build/CMakeFiles/CMakeScratch/TryCompile-oyaqbo
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/ninja cmTC_72514 && [1/2] Building CXX object CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [Ubuntu clang version 14.0.0-1ubuntu1]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  ignore line: [ (in-process)]
+  ignore line: [ "/usr/lib/llvm-14/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -emit-obj -mrelax-all --mrelax-relocations -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -dependency-file CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o.d -MT CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -fdeprecated-macro -fdebug-compilation-dir=/home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11]
+  ignore line: [ /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11]
+  ignore line: [ /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward]
+  ignore line: [ /usr/lib/llvm-14/lib/clang/14.0.0/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include/x86_64-linux-gnu]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking CXX executable cmTC_72514]
+  ignore line: [Ubuntu clang version 14.0.0-1ubuntu1]
+  ignore line: [Target: x86_64-pc-linux-gnu]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+  ignore line: [Candidate multilib: .]
+  ignore line: [@m64]
+  ignore line: [Selected multilib: .]
+  ignore line: [@m64]
+  link line: [ "/usr/bin/ld" -pie -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_72514 /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-14/bin/../lib -L/lib -L/usr/lib CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o /lib/x86_64-linux-gnu/crtn.o]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [--hash-style=gnu] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_72514] ==> ignore
+    arg [/lib/x86_64-linux-gnu/Scrt1.o] ==> obj [/lib/x86_64-linux-gnu/Scrt1.o]
+    arg [/lib/x86_64-linux-gnu/crti.o] ==> obj [/lib/x86_64-linux-gnu/crti.o]
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/11] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11]
+    arg [-L/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64] ==> dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64]
+    arg [-L/lib/x86_64-linux-gnu] ==> dir [/lib/x86_64-linux-gnu]
+    arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
+    arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+    arg [-L/usr/lib/llvm-14/bin/../lib] ==> dir [/usr/lib/llvm-14/bin/../lib]
+    arg [-L/lib] ==> dir [/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_72514.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+    arg [/lib/x86_64-linux-gnu/crtn.o] ==> obj [/lib/x86_64-linux-gnu/crtn.o]
+  collapse obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o]
+  collapse obj [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o] ==> [/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11] ==> [/usr/lib/gcc/x86_64-linux-gnu/11]
+  collapse library dir [/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64] ==> [/usr/lib64]
+  collapse library dir [/lib/x86_64-linux-gnu] ==> [/lib/x86_64-linux-gnu]
+  collapse library dir [/lib/../lib64] ==> [/lib64]
+  collapse library dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
+  collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+  collapse library dir [/usr/lib/llvm-14/bin/../lib] ==> [/usr/lib/llvm-14/lib]
+  collapse library dir [/lib] ==> [/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+  implicit objs: [/lib/x86_64-linux-gnu/Scrt1.o;/lib/x86_64-linux-gnu/crti.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtbeginS.o;/usr/lib/gcc/x86_64-linux-gnu/11/crtendS.o;/lib/x86_64-linux-gnu/crtn.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/11;/usr/lib64;/lib/x86_64-linux-gnu;/lib64;/usr/lib/x86_64-linux-gnu;/usr/lib/llvm-14/lib;/lib;/usr/lib]
+  implicit fwks: []
 
-Run Build Command(s):C:/PROGRA~2/MICROS~4/2019/COMMUN~1/Common7/IDE/COMMON~1/MICROS~1/CMake/Ninja/ninja.exe cmTC_db766 && [1/2] Building CXX object CMakeFiles\cmTC_db766.dir\feature_tests.cxx.obj
-[2/2] Linking CXX executable cmTC_db766.exe
+
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_ad0c2 && [1/2] Building C object CMakeFiles/cmTC_ad0c2.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_ad0c2
 
 
 
-    Feature record: CXX_FEATURE:1cxx_template_template_parameters
-    Feature record: CXX_FEATURE:1cxx_alias_templates
-    Feature record: CXX_FEATURE:1cxx_alignas
-    Feature record: CXX_FEATURE:1cxx_alignof
-    Feature record: CXX_FEATURE:1cxx_attributes
-    Feature record: CXX_FEATURE:1cxx_auto_type
-    Feature record: CXX_FEATURE:1cxx_constexpr
-    Feature record: CXX_FEATURE:1cxx_decltype
-    Feature record: CXX_FEATURE:1cxx_default_function_template_args
-    Feature record: CXX_FEATURE:1cxx_defaulted_functions
-    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
-    Feature record: CXX_FEATURE:1cxx_delegating_constructors
-    Feature record: CXX_FEATURE:1cxx_deleted_functions
-    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
-    Feature record: CXX_FEATURE:1cxx_explicit_conversions
-    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
-    Feature record: CXX_FEATURE:1cxx_extern_templates
-    Feature record: CXX_FEATURE:1cxx_final
-    Feature record: CXX_FEATURE:1cxx_func_identifier
-    Feature record: CXX_FEATURE:1cxx_generalized_initializers
-    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
-    Feature record: CXX_FEATURE:1cxx_inline_namespaces
-    Feature record: CXX_FEATURE:1cxx_lambdas
-    Feature record: CXX_FEATURE:1cxx_local_type_template_args
-    Feature record: CXX_FEATURE:1cxx_long_long_type
-    Feature record: CXX_FEATURE:1cxx_noexcept
-    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
-    Feature record: CXX_FEATURE:1cxx_nullptr
-    Feature record: CXX_FEATURE:1cxx_override
-    Feature record: CXX_FEATURE:1cxx_range_for
-    Feature record: CXX_FEATURE:1cxx_raw_string_literals
-    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
-    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
-    Feature record: CXX_FEATURE:1cxx_rvalue_references
-    Feature record: CXX_FEATURE:1cxx_sizeof_member
-    Feature record: CXX_FEATURE:1cxx_static_assert
-    Feature record: CXX_FEATURE:1cxx_strong_enums
-    Feature record: CXX_FEATURE:1cxx_thread_local
-    Feature record: CXX_FEATURE:1cxx_trailing_return_types
-    Feature record: CXX_FEATURE:1cxx_unicode_literals
-    Feature record: CXX_FEATURE:1cxx_uniform_initialization
-    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
-    Feature record: CXX_FEATURE:1cxx_user_literals
-    Feature record: CXX_FEATURE:1cxx_variadic_macros
-    Feature record: CXX_FEATURE:1cxx_variadic_templates
-    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
-    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
-    Feature record: CXX_FEATURE:1cxx_binary_literals
-    Feature record: CXX_FEATURE:1cxx_contextual_conversions
-    Feature record: CXX_FEATURE:1cxx_decltype_auto
-    Feature record: CXX_FEATURE:1cxx_digit_separators
-    Feature record: CXX_FEATURE:1cxx_generic_lambdas
-    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
-    Feature record: CXX_FEATURE:1cxx_relaxed_constexpr
-    Feature record: CXX_FEATURE:1cxx_return_type_deduction
-    Feature record: CXX_FEATURE:1cxx_variable_templates
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_5c910 && [1/2] Building C object CMakeFiles/cmTC_5c910.dir/src.c.o
+[2/2] Linking C executable cmTC_5c910
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function XOpenDisplay exists in the /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so passed with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_04cf4 && [1/2] Building C object CMakeFiles/cmTC_04cf4.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_04cf4
+
+
+
+Determining if the function gethostbyname exists passed with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_dae77 && [1/2] Building C object CMakeFiles/cmTC_dae77.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_dae77
+
+
+
+Determining if the function connect exists passed with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_5e6b2 && [1/2] Building C object CMakeFiles/cmTC_5e6b2.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_5e6b2
+
+
+
+Determining if the function remove exists passed with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_a697c && [1/2] Building C object CMakeFiles/cmTC_a697c.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_a697c
+
+
+
+Determining if the function shmat exists passed with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_c534e && [1/2] Building C object CMakeFiles/cmTC_c534e.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_c534e
+
+
+
+Determining if the function IceConnectionNumber exists in the ICE passed with the following output:
+Change Dir: /home/wendy/Documents/TRISTAN/OPENGL_2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja cmTC_884e6 && [1/2] Building C object CMakeFiles/cmTC_884e6.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_884e6
+
+
+

@@ -1,2 +1,0 @@
-C:/MinGW/bin/ar.exe qc libglimac.a CMakeFiles/glimac.dir/src/Cone.cpp.obj CMakeFiles/glimac.dir/src/Geometry.cpp.obj CMakeFiles/glimac.dir/src/Image.cpp.obj CMakeFiles/glimac.dir/src/Program.cpp.obj CMakeFiles/glimac.dir/src/Shader.cpp.obj CMakeFiles/glimac.dir/src/Sphere.cpp.obj CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.obj
-C:/MinGW/bin/ranlib.exe libglimac.a

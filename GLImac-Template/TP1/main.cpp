@@ -35,12 +35,12 @@ static void size_callback(GLFWwindow* /*window*/, int width, int height)
     window_width  = width;
     window_height = height;
 }
-[[maybe_unused]] float aspectRatio = 1.f * window_width / window_height;
+ float aspectRatio = 1.f * window_width / window_height;
 
 class Vertex2DColor {
 public:
-    [[maybe_unused]] glm::vec2 position;
-    [[maybe_unused]] glm::vec3 color;
+     glm::vec2 position;
+     glm::vec3 color;
 
 public:
     Vertex2DColor() = default;

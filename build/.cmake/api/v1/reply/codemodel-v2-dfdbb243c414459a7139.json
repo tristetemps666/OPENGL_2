@@ -1,0 +1,314 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				},
+				{
+					"build" : "glimac",
+					"childIndexes" : 
+					[
+						2,
+						5
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-glimac-Debug-ebe3615535dda0ae9fa6.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "glimac",
+					"targetIndexes" : 
+					[
+						10,
+						12
+					]
+				},
+				{
+					"build" : "glimac/third-party/glfw",
+					"childIndexes" : 
+					[
+						3,
+						4
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-glimac.third-party.glfw-Debug-3eaa4ef4b81945efe539.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "glimac/third-party/glfw",
+					"targetIndexes" : 
+					[
+						13
+					]
+				},
+				{
+					"build" : "glimac/third-party/glfw/src",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-glimac.third-party.glfw.src-Debug-4e889790bc0582eda19e.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "glimac/third-party/glfw/src",
+					"targetIndexes" : 
+					[
+						11,
+						14
+					]
+				},
+				{
+					"build" : "glimac/third-party/glfw/docs",
+					"jsonFile" : "directory-glimac.third-party.glfw.docs-Debug-c5b32cc5f947279c7c5a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.4"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 1,
+					"source" : "glimac/third-party/glfw/docs",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "glimac/third-party/glm",
+					"childIndexes" : 
+					[
+						6
+					],
+					"jsonFile" : "directory-glimac.third-party.glm-Debug-9b9097ea5e2071fc6910.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 2,
+					"source" : "glimac/third-party/glm"
+				},
+				{
+					"build" : "glimac/third-party/glm/glm",
+					"jsonFile" : "directory-glimac.third-party.glm.glm-Debug-8d1c6e67d3d10ca8087b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.2"
+					},
+					"parentIndex" : 5,
+					"projectIndex" : 2,
+					"source" : "glimac/third-party/glm/glm"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "SimpleGlimac",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						10,
+						12
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3,
+						4
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9,
+						11,
+						13,
+						14
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5,
+						6
+					],
+					"name" : "glm",
+					"parentIndex" : 0
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TP1_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP1_exe-Debug-484fb0cd7c566feb2117.json",
+					"name" : "TP1_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP2_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP2_exe-Debug-7fe965d8a2ce52412562.json",
+					"name" : "TP2_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP3_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP3_exe-Debug-61bc47bf24f1191f3f83.json",
+					"name" : "TP3_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP4_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP4_exe-Debug-fdc3270c4c23912c7578.json",
+					"name" : "TP4_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP5_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP5_exe-Debug-6a8ba1f96cfd5fc75743.json",
+					"name" : "TP5_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP6_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP6_exe-Debug-0837fe604ece1b59c194.json",
+					"name" : "TP6_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP7_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP7_exe-Debug-e5e52d434a7eef79f830.json",
+					"name" : "TP7_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP8_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP8_exe-Debug-bd83cd65b83ca6ffd5cc.json",
+					"name" : "TP8_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "TP9_exe::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP9_exe-Debug-46b2835ae415c945acd9.json",
+					"name" : "TP9_exe",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "docs::@3f9edf333e1ca34279b3",
+					"jsonFile" : "target-docs-Debug-382bbc3e1d2120de60ed.json",
+					"name" : "docs",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "glad::@cfa65abc3ab409b74416",
+					"jsonFile" : "target-glad-Debug-e8df76b9d2bdae664d43.json",
+					"name" : "glad",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfw::@650d230e8f6139fb999d",
+					"jsonFile" : "target-glfw-Debug-212dc50227ca32abef59.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "glimac::@cfa65abc3ab409b74416",
+					"jsonFile" : "target-glimac-Debug-8fa6dc37ec064a958d03.json",
+					"name" : "glimac",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "uninstall::@43e626f758b6f20522a2",
+					"jsonFile" : "target-uninstall-Debug-693c745eadbb623c78a3.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "update_mappings::@650d230e8f6139fb999d",
+					"jsonFile" : "target-update_mappings-Debug-fa950bb56b87f599857b.json",
+					"name" : "update_mappings",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/wendy/Documents/TRISTAN/OPENGL_2/build",
+		"source" : "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
