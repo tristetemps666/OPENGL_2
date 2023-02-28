@@ -1,4 +1,4 @@
-# Install script for directory: /home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac
+# Install script for directory: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -44,8 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glfw/cmake_install.cmake")
-  include("/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glm/cmake_install.cmake")
+  include("/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glfw/cmake_install.cmake")
+  include("/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glm/cmake_install.cmake")
 
 endif()
 

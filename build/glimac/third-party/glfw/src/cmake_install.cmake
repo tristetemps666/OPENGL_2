@@ -1,4 +1,4 @@
-# Install script for directory: /home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/src
+# Install script for directory: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -43,6 +43,6 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glfw/src/libglfw3.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glfw/src/libglfw3.a")
 endif()
 

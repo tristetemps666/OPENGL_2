@@ -18,5 +18,6 @@ void main()
     vec2 gv = fract(uv * 10);
 
     fFragColor = vec3(gv.x, gv.y, 0.);
+    fFragColor = vec3(2*length(uv));
     // fFragColor = gl_Position.xyz;
 }

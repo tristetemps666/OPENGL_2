@@ -1,4 +1,4 @@
-# Install script for directory: /home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs
+# Install script for directory: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

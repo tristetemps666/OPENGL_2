@@ -1,6 +1,18 @@
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <utility>
+#include <vector>
+#include "glm/ext/scalar_constants.hpp"
+#include "glm/fwd.hpp"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <glimac/FilePath.hpp>
+#include <glimac/Program.hpp>
+#include <glimac/glm.hpp>
+
+#include "Vertex2Duv.hpp"
 
 int window_width  = 1280;
 int window_height = 720;
@@ -26,6 +38,9 @@ static void size_callback(GLFWwindow* /*window*/, int width, int height)
     window_width  = width;
     window_height = height;
 }
+
+static float aspectRatio = 1.f * window_width / window_height;
+
 
 int main()
 {
@@ -63,10 +78,89 @@ int main()
     glfwSetCursorPosCallback(window, &cursor_position_callback);
     glfwSetWindowSizeCallback(window, &size_callback);
 
+
+
+    GLuint vbo;
+
+    // setup vbo
+    glGenBuffers(1,&vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+
+    // THE SQUARE data
+    std::vector<Vertex2Duv> square = {
+        Vertex2Duv(glm::vec2(-0.5, -0.5), glm::vec2()), // top left
+        Vertex2Duv(glm::vec2(0.5, -0.5), glm::vec2()),  // top right
+        Vertex2Duv(glm::vec2(0.5, 0.5), glm::vec2()),   // bottom left
+        Vertex2Duv(glm::vec2(-0.5, 0.5), glm::vec2()),  // bottom right
+    };
+    std::for_each(square.begin(), square.end(), [&](Vertex2Duv &vertex){
+        vertex.position.x*= 1/aspectRatio;
+    });
+
+
+// vbo et ibo
+//////////////////
+//////////////////
+    // add the square to the buffer
+    glBufferData(GL_ARRAY_BUFFER, square.size() * sizeof(Vertex2Duv), square.data(), GL_STATIC_DRAW);
+    glBindBuffer(GL_ARRAY_BUFFER,0);
+
+    // setup the ibo
+    GLuint ibo;
+    glGenBuffers(1,&ibo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    
+    std::vector<glm::uint32_t> indices = {
+        0, 1, 2, 0, 2, 3
+    };
+
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices) * indices.size(), indices.data(), GL_STATIC_DRAW);
+
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
+//////////////////
+//////////////////
+
+
+// vao
+//////////////////
+//////////////////
+    GLuint vao;
+    const GLuint VERTEX_ATTR_POSITION = 0;
+    const GLuint UV_ATTR_POSITION = 1;
+
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
+    glEnableVertexAttribArray(UV_ATTR_POSITION);
+    
+
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2Duv), (const GLvoid*)offsetof(Vertex2Duv, position));
+    glVertexAttribPointer(UV_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2Duv), (const GLvoid*)offsetof(Vertex2Duv, uv));
+
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+
+
+//////////////////
+//////////////////
+
+
+
+
+
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0.5f, 1.f, 0.5f, 1.f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        glBindVertexArray(vao);
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
@@ -74,6 +168,8 @@ int main()
         glfwPollEvents();
     }
 
+    glDeleteBuffers(1, &vbo);
+    glDeleteVertexArrays(1, &vao);
     glfwTerminate();
     return 0;
 }

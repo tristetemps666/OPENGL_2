@@ -58,7 +58,7 @@ PROJECT_LOGO           =
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = "/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glfw/docs"
+OUTPUT_DIRECTORY       = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glfw/docs"
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -736,7 +736,7 @@ FILE_VERSION_FILTER    =
 # DoxygenLayout.xml, doxygen will parse it automatically even if the LAYOUT_FILE
 # tag is left empty.
 
-LAYOUT_FILE            = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/DoxygenLayout.xml"
+LAYOUT_FILE            = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/DoxygenLayout.xml"
 
 # The CITE_BIB_FILES tag can be used to specify one or more bib files containing
 # the reference definitions. This must be a list of .bib files. The .bib
@@ -812,7 +812,7 @@ WARN_FORMAT            = "$file:$line: $text"
 # messages should be written. If left blank the output is written to standard
 # error (stderr).
 
-WARN_LOGFILE           = "/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glfw/docs/warnings.txt"
+WARN_LOGFILE           = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glfw/docs/warnings.txt"
 
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
@@ -825,22 +825,22 @@ WARN_LOGFILE           = "/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/th
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  =  \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/include/GLFW/glfw3.h" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/include/GLFW/glfw3native.h" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/main.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/news.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/quick.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/moving.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/compile.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/build.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/intro.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/context.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/monitor.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/window.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/input.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/vulkan.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/compat.dox" \
-"/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/internal.dox"
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/include/GLFW/glfw3.h" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/include/GLFW/glfw3native.h" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/main.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/news.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/quick.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/moving.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/compile.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/build.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/intro.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/context.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/monitor.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/window.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/input.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/vulkan.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/compat.dox" \
+"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/internal.dox"
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -915,7 +915,7 @@ EXCLUDE_SYMBOLS        = APIENTRY GLFWAPI
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/examples"
+EXAMPLE_PATH           = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/examples"
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and
@@ -1140,7 +1140,7 @@ HTML_FILE_EXTENSION    = .html
 # of the possible markers and block names see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_HEADER            = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/header.html"
+HTML_HEADER            = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/header.html"
 
 # The HTML_FOOTER tag can be used to specify a user-defined HTML footer for each
 # generated HTML page. If the tag is left blank doxygen will generate a standard
@@ -1150,7 +1150,7 @@ HTML_HEADER            = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template
 # that doxygen normally uses.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_FOOTER            = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/footer.html"
+HTML_FOOTER            = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/footer.html"
 
 # The HTML_STYLESHEET tag can be used to specify a user-defined cascading style
 # sheet that is used by each HTML page. It can be used to fine-tune the look of
@@ -1175,7 +1175,7 @@ HTML_STYLESHEET        =
 # list). For an example see the documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_STYLESHEET  = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/extra.css"
+HTML_EXTRA_STYLESHEET  = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/extra.css"
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -1185,7 +1185,7 @@ HTML_EXTRA_STYLESHEET  = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = "/home/wendy/Documents/TRISTAN/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/spaces.svg"
+HTML_EXTRA_FILES       = "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/third-party/glfw/docs/spaces.svg"
 
 # The HTML_COLORSTYLE_HUE tag controls the color of the HTML output. Doxygen
 # will adjust the colors in the style sheet and background images according to

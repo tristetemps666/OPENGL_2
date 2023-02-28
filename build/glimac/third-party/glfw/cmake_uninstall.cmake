@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glfw/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glfw/install_manifest.txt\"")
+if (NOT EXISTS "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glfw/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glfw/install_manifest.txt\"")
 endif()
 
-file(READ "/home/wendy/Documents/TRISTAN/OPENGL_2/build/glimac/third-party/glfw/install_manifest.txt" files)
+file(READ "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/glimac/third-party/glfw/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

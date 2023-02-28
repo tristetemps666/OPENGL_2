@@ -13,6 +13,8 @@
 #include <glimac/Program.hpp>
 #include <glimac/glm.hpp>
 
+#include "Vertex2DColor.hpp"
+
 int window_width  = 1280;
 int window_height = 720;
 
@@ -37,19 +39,7 @@ static void size_callback(GLFWwindow* /*window*/, int width, int height)
     window_width  = width;
     window_height = height;
 }
- float aspectRatio = 1.f * window_width / window_height;
-
-class Vertex2DColor {
-public:
-     glm::vec2 position;
-     glm::vec3 color;
-
-public:
-    Vertex2DColor() = default;
-
-    Vertex2DColor(glm::vec2 pos, glm::vec3 col)
-        : position(pos), color(col) { position.x *= 1 / aspectRatio; };
-};
+float aspectRatio = 1.f * window_width / window_height;
 
 std::vector<Vertex2DColor> Generate_circle_position(float radius, glm::vec2 center, unsigned int nb_points)
 {
@@ -214,7 +204,7 @@ int main(int argc, char* argv[])
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
         glfwGetCursorPos(window, &mousePos.x, &mousePos.y);
-        std::cout << mousePos << std::endl;
+        //std::cout << mousePos << std::endl;
 
         glClearColor(1.f, 0.5f, 0.5f, 1.f);
         glClear(GL_COLOR_BUFFER_BIT);
