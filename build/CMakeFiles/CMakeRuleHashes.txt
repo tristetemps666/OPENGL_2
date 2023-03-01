@@ -4,6 +4,8 @@ cf75e3e7d56f45c531e0b3290d406770 DUMMY_TP1/shaders/triangle.vs.glsl_TP1_exe
 7250d191ee680413d3fe42b00cbd90a4 DUMMY_TP2/shaders/color2D.fs.glsl_TP2_exe
 e30ea7d00dc1674af45f12ca0eefd56e DUMMY_TP2/shaders/color2D.vs.glsl_TP2_exe
 b2637f059bbf3b34bcdd0eba6ae79f79 DUMMY_TP3/shaders/shader.fs.glsl_TP3_exe
+8c5e4b76e1fe338d1b51b5b6846607ae DUMMY_TP3/shaders/tex2D.fs.glsl_TP3_exe
+eccd8056cdeb6f3f13a634e23f05d48a DUMMY_TP3/shaders/tex2D.vs.glsl_TP3_exe
 518b021dab9e523527a657f30e0b67d3 DUMMY_TP4/shaders/shader.fs.glsl_TP4_exe
 dcd1ae676bbeef230df30e054adc3512 DUMMY_TP5/shaders/shader.fs.glsl_TP5_exe
 86407394ec10f017b304c9e6b576e950 DUMMY_TP6/shaders/shader.fs.glsl_TP6_exe

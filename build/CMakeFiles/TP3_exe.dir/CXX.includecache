@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP3/Transform2D.hpp
+glimac/glm.hpp
+-
+
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP3/Vertex2Duv.hpp
 glimac/glm.hpp
 -
@@ -21,6 +25,8 @@ utility
 -
 vector
 -
+glimac/Image.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP3/glimac/Image.hpp
 glm/ext/scalar_constants.hpp
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP3/glm/ext/scalar_constants.hpp
 glm/fwd.hpp
@@ -37,12 +43,26 @@ glimac/glm.hpp
 -
 Vertex2Duv.hpp
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP3/Vertex2Duv.hpp
+Transform2D.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP3/Transform2D.hpp
 
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/FilePath.hpp
 string
 -
 iostream
 -
+
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/Image.hpp
+vector
+-
+memory
+-
+unordered_map
+-
+glm.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/glm.hpp
+FilePath.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/FilePath.hpp
 
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/Program.hpp
 GLFW/glfw3.h

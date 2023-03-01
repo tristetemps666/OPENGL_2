@@ -204,7 +204,6 @@ int main(int argc, char* argv[])
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
         glfwGetCursorPos(window, &mousePos.x, &mousePos.y);
-        //std::cout << mousePos << std::endl;
 
         glClearColor(1.f, 0.5f, 0.5f, 1.f);
         glClear(GL_COLOR_BUFFER_BIT);

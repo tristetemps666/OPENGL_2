@@ -3,6 +3,7 @@
 #include <cmath>
 #include <utility>
 #include <vector>
+#include "glimac/Image.hpp"
 #include "glm/ext/scalar_constants.hpp"
 #include "glm/fwd.hpp"
 #define GLFW_INCLUDE_NONE
@@ -13,6 +14,7 @@
 #include <glimac/glm.hpp>
 
 #include "Vertex2Duv.hpp"
+#include "Transform2D.hpp"
 
 int window_width  = 1280;
 int window_height = 720;
@@ -42,7 +44,7 @@ static void size_callback(GLFWwindow* /*window*/, int width, int height)
 static float aspectRatio = 1.f * window_width / window_height;
 
 
-int main()
+int main(int argc, char* argv[])
 {
     /* Initialize the library */
     if (!glfwInit()) {
@@ -79,6 +81,20 @@ int main()
     glfwSetWindowSizeCallback(window, &size_callback);
 
 
+    glimac::FilePath       applicationPath(argv[0]);
+    const glimac::FilePath vs_path = argc <= 1 ? applicationPath.dirPath() + "TP3/shaders/tex2D.vs.glsl"
+                                               : applicationPath.dirPath() + "TP3/shaders/" + argv[1] + ".glsl";
+
+    const glimac::FilePath fs_path = argc <= 1 ? applicationPath.dirPath() + "TP3/shaders/tex2D.fs.glsl"
+                                               : applicationPath.dirPath() + "TP3/shaders/" + argv[2] + ".glsl";
+
+    glimac::Program program = glimac::loadProgram(vs_path, fs_path);
+
+    // pass the resolution to the shaders
+    GLint res_loc = glad_glGetProgramResourceLocation(program.getGLId(), GL_UNIFORM, "iResolution");
+    glad_glProgramUniform2f(program.getGLId(), res_loc, window_width, window_height);
+    program.use();
+
 
     GLuint vbo;
 
@@ -89,15 +105,11 @@ int main()
 
     // THE SQUARE data
     std::vector<Vertex2Duv> square = {
-        Vertex2Duv(glm::vec2(-0.5, -0.5), glm::vec2()), // top left
-        Vertex2Duv(glm::vec2(0.5, -0.5), glm::vec2()),  // top right
-        Vertex2Duv(glm::vec2(0.5, 0.5), glm::vec2()),   // bottom left
-        Vertex2Duv(glm::vec2(-0.5, 0.5), glm::vec2()),  // bottom right
+        Vertex2Duv(glm::vec2(-0.5, -0.5), glm::vec2(-1,-1)), // top left
+        Vertex2Duv(glm::vec2(0.5, -0.5), glm::vec2(1,-1)),  // top right
+        Vertex2Duv(glm::vec2(0.5, 0.5), glm::vec2(1,1)),   // bottom left
+        Vertex2Duv(glm::vec2(-0.5, 0.5), glm::vec2(-1,1)),  // bottom right
     };
-    std::for_each(square.begin(), square.end(), [&](Vertex2Duv &vertex){
-        vertex.position.x*= 1/aspectRatio;
-    });
-
 
 // vbo et ibo
 //////////////////
@@ -129,12 +141,12 @@ int main()
     const GLuint VERTEX_ATTR_POSITION = 0;
     const GLuint UV_ATTR_POSITION = 1;
 
+
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
     glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
     glEnableVertexAttribArray(UV_ATTR_POSITION);
-    
 
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -149,6 +161,13 @@ int main()
 //////////////////
 
 
+// load images
+//////////////////
+//////////////////
+    std::unique_ptr<glimac::Image> img_ptr = glimac::loadImage("/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/assets/texture/triforce.png");
+    if(img_ptr == nullptr) std::cout << "null";
+
+
 
 
 
@@ -157,6 +176,37 @@ int main()
     while (!glfwWindowShouldClose(window)) {
         glClearColor(0.5f, 1.f, 0.5f, 1.f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+
+        // rotation along time
+        glm::mat3  transform_mat = Rotate(glfwGetTime());
+        transform_mat *= Scale(sin(glfwGetTime()),sin(glfwGetTime()));
+        // transform_mat = Translate(6*sin(glfwGetTime()),0.);
+
+        GLuint location =glGetUniformLocation(program.getGLId(),
+                                        "TransformMatrix");
+
+
+        glUniformMatrix3fv(location, 1, GL_FALSE, 
+                        glm::value_ptr(transform_mat));
+
+        
+        // sending aspect ratio;
+        GLuint aspectRatio_location =glGetUniformLocation(program.getGLId(),"aspectRatio");
+        glUniform1fv(aspectRatio_location,1,&aspectRatio);
+
+
+        glBindVertexArray(vao);
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+
+        transform_mat*= Translate(0.2,0.2);
+        glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(transform_mat));
+
+        glBindVertexArray(vao);
+        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+
+        transform_mat*= Translate(0.2,0.2);
+        glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(transform_mat));
 
         glBindVertexArray(vao);
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

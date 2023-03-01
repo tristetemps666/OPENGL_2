@@ -180,7 +180,7 @@
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				1
+				2
 			]
 		}
 	],
@@ -260,36 +260,43 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				0
+				0,
+				1
 			]
 		},
 		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				1
+				2
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				2,
 				3,
-				5
+				4,
+				5,
+				7
 			]
 		},
 		{
 			"name" : "Object Files",
 			"sourceIndexes" : 
 			[
-				4,
-				6
+				6,
+				8
 			]
 		}
 	],
 	"sources" : 
 	[
+		{
+			"backtrace" : 6,
+			"path" : "TP3/Transform2D.hpp",
+			"sourceGroupIndex" : 0
+		},
 		{
 			"backtrace" : 6,
 			"path" : "TP3/Vertex2Duv.hpp",
@@ -303,7 +310,12 @@
 		},
 		{
 			"backtrace" : 6,
-			"path" : "TP3/shaders/shader.fs.glsl",
+			"path" : "TP3/shaders/tex2D.fs.glsl",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 6,
+			"path" : "TP3/shaders/tex2D.vs.glsl",
 			"sourceGroupIndex" : 2
 		},
 		{
