@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/Transform2D.hpp
-glimac/glm.hpp
--
-
-/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/Vertex2Duv.hpp
-glimac/glm.hpp
--
-
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/main.cpp
 algorithm
 -
@@ -27,6 +19,8 @@ vector
 -
 glimac/Image.hpp
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/glimac/Image.hpp
+glm/ext/matrix_clip_space.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/glm/ext/matrix_clip_space.hpp
 glm/ext/scalar_constants.hpp
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/glm/ext/scalar_constants.hpp
 glm/fwd.hpp
@@ -41,10 +35,8 @@ glimac/Program.hpp
 -
 glimac/glm.hpp
 -
-Vertex2Duv.hpp
-/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/Vertex2Duv.hpp
-Transform2D.hpp
-/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/Transform2D.hpp
+glimac/Sphere.hpp
+-
 
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/FilePath.hpp
 string
@@ -81,6 +73,18 @@ FilePath.hpp
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/FilePath.hpp
 glad/glad.h
 -
+
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/Sphere.hpp
+vector
+-
+common.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/common.hpp
+
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/common.hpp
+GLFW/glfw3.h
+-
+glm.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/glm.hpp
 
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/glm.hpp
 glm/glm.hpp

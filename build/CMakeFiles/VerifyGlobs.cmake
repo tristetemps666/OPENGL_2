@@ -77,11 +77,9 @@ endif()
 # MY_SOURCES at CMakeLists.txt:26 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/*")
 set(OLD_GLOB
-  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/Transform2D.hpp"
-  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/Vertex2Duv.hpp"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/main.cpp"
-  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex2D.fs.glsl"
-  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex2D.vs.glsl"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/3D.vs.glsl"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/normal.fs.glsl"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -91,8 +89,8 @@ endif()
 # FILES at CMakeUtils/files_and_folders.cmake:43 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/*")
 set(OLD_GLOB
-  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex2D.fs.glsl"
-  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex2D.vs.glsl"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/3D.vs.glsl"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/normal.fs.glsl"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
