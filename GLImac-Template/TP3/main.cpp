@@ -102,14 +102,16 @@ int main(int argc, char* argv[])
     glGenBuffers(1,&vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
+// 
 
     // THE SQUARE data
     std::vector<Vertex2Duv> square = {
-        Vertex2Duv(glm::vec2(-0.5, -0.5), glm::vec2(-1,-1)), // top left
-        Vertex2Duv(glm::vec2(0.5, -0.5), glm::vec2(1,-1)),  // top right
-        Vertex2Duv(glm::vec2(0.5, 0.5), glm::vec2(1,1)),   // bottom left
-        Vertex2Duv(glm::vec2(-0.5, 0.5), glm::vec2(-1,1)),  // bottom right
+        Vertex2Duv(glm::vec2(-0.5, -0.5), glm::vec2(0,1)), // bottom left
+        Vertex2Duv(glm::vec2(0.5, -0.5), glm::vec2(1,1)),  // bottom right
+        Vertex2Duv(glm::vec2(0.5, 0.5), glm::vec2(0,0)),   // top left
+        Vertex2Duv(glm::vec2(-0.5, 0.5), glm::vec2(1,0)),  // top right
     };
+    
 
 // vbo et ibo
 //////////////////
@@ -164,12 +166,21 @@ int main(int argc, char* argv[])
 // load images
 //////////////////
 //////////////////
-    std::unique_ptr<glimac::Image> img_ptr = glimac::loadImage("/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/assets/texture/triforce.png");
+    std::unique_ptr<glimac::Image> img_ptr = glimac::loadImage("C:/IMAC_FAAAAst/PROJET_OPENGL/OPENGL_2/assets/texture/triforce.png");
     if(img_ptr == nullptr) std::cout << "null";
 
+    GLuint vto;
+    glGenTextures(1,&vto);
+    glBindTexture(GL_TEXTURE_2D, vto);
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,img_ptr.get()->getWidth(),img_ptr.get()->getHeight(),0,GL_RGBA,GL_FLOAT,img_ptr.get()->getPixels());
 
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+    glBindTexture(GL_TEXTURE_2D,0);
 
+    GLuint texLoc =glGetUniformLocation(program.getGLId(),
+                                        "uTexture");
 
 
     /* Loop until the user closes the window */
@@ -179,8 +190,8 @@ int main(int argc, char* argv[])
 
 
         // rotation along time
-        glm::mat3  transform_mat = Rotate(glfwGetTime());
-        transform_mat *= Scale(sin(glfwGetTime()),sin(glfwGetTime()));
+        glm::mat3  transform_mat = Rotate(0);
+        // transform_mat *= Scale(sin(glfwGetTime()),sin(glfwGetTime()));
         // transform_mat = Translate(6*sin(glfwGetTime()),0.);
 
         GLuint location =glGetUniformLocation(program.getGLId(),
@@ -196,21 +207,25 @@ int main(int argc, char* argv[])
         glUniform1fv(aspectRatio_location,1,&aspectRatio);
 
 
+        // glBindVertexArray(vao);
+        // glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+
+        // transform_mat*= Translate(0.2,0.2);
+        // glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(transform_mat));
+
+        // glBindVertexArray(vao);
+        // glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
+
+        // transform_mat*= Translate(0.2,0.2);
+        // glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(transform_mat));
+
         glBindVertexArray(vao);
+        glBindTexture(GL_TEXTURE_2D, vto);
+        glUniform1i(texLoc,0);
+
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
-        transform_mat*= Translate(0.2,0.2);
-        glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(transform_mat));
-
-        glBindVertexArray(vao);
-        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-
-        transform_mat*= Translate(0.2,0.2);
-        glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(transform_mat));
-
-        glBindVertexArray(vao);
-        glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
-
+        glBindTexture(GL_TEXTURE_2D,0);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);

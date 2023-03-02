@@ -1,7 +1,12 @@
 #version 330
 
 in vec2      vUV;
+
 uniform vec2 iResolution;
+uniform sampler2D uTexture;
+
+
+
 float        aspecRatio = iResolution.y / iResolution.x;
 
 out vec3 fFragColor;
@@ -13,5 +18,7 @@ vec2 get_normalized_uv()
 
 void main()
 {
-    fFragColor = vec3(vUV.x, vUV.y, 0.);
+    vec4 coolTex = texture(uTexture,vUV);
+    fFragColor = coolTex.xyz;
+    // fFragColor = vec3(vUV.x, vUV.y, 0.);
 }
