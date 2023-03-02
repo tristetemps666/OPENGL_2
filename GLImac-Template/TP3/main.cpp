@@ -108,8 +108,8 @@ int main(int argc, char* argv[])
     std::vector<Vertex2Duv> square = {
         Vertex2Duv(glm::vec2(-0.5, -0.5), glm::vec2(0,1)), // bottom left
         Vertex2Duv(glm::vec2(0.5, -0.5), glm::vec2(1,1)),  // bottom right
-        Vertex2Duv(glm::vec2(0.5, 0.5), glm::vec2(0,0)),   // top left
-        Vertex2Duv(glm::vec2(-0.5, 0.5), glm::vec2(1,0)),  // top right
+        Vertex2Duv(glm::vec2(-0.5, 0.5), glm::vec2(0,0)),   // top left
+        Vertex2Duv(glm::vec2(0.5, 0.5), glm::vec2(1,0))  // top right
     };
     
 
@@ -126,7 +126,7 @@ int main(int argc, char* argv[])
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
     
     std::vector<glm::uint32_t> indices = {
-        0, 1, 2, 0, 2, 3
+        0, 1, 2, 1, 3, 2
     };
 
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices) * indices.size(), indices.data(), GL_STATIC_DRAW);
@@ -153,7 +153,7 @@ int main(int argc, char* argv[])
 
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2Duv), (const GLvoid*)offsetof(Vertex2Duv, position));
-    glVertexAttribPointer(UV_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex2Duv), (const GLvoid*)offsetof(Vertex2Duv, uv));
+    glVertexAttribPointer(UV_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex2Duv), (const GLvoid*)offsetof(Vertex2Duv, uv));
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -166,7 +166,8 @@ int main(int argc, char* argv[])
 // load images
 //////////////////
 //////////////////
-    std::unique_ptr<glimac::Image> img_ptr = glimac::loadImage("C:/IMAC_FAAAAst/PROJET_OPENGL/OPENGL_2/assets/texture/triforce.png");
+    std::cout << applicationPath.dirPath() << std::endl;
+    std::unique_ptr<glimac::Image> img_ptr = glimac::loadImage("/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/assets/texture/triforce.png");
     if(img_ptr == nullptr) std::cout << "null";
 
     GLuint vto;

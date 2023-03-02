@@ -1,6 +1,19 @@
+#include <GL/glext.h>
+#include <algorithm>
+#include <array>
+#include <cmath>
+#include <utility>
+#include <vector>
+#include "glimac/Image.hpp"
+#include "glm/ext/scalar_constants.hpp"
+#include "glm/fwd.hpp"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <glimac/FilePath.hpp>
+#include <glimac/Program.hpp>
+#include <glimac/glm.hpp>
+#include <glimac/Sphere.hpp>
 
 int window_width  = 1280;
 int window_height = 720;
@@ -42,7 +55,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 #endif
-    GLFWwindow* window = glfwCreateWindow(window_width, window_height, "TP4", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(window_width, window_height, "TP5", nullptr, nullptr);
     if (!window) {
         glfwTerminate();
         return -1;
@@ -63,9 +76,44 @@ int main()
     glfwSetCursorPosCallback(window, &cursor_position_callback);
     glfwSetWindowSizeCallback(window, &size_callback);
 
+
+
+    // MATRIX
+    glm::mat4 NormalMatrix;
+    glm::mat4 MVMatrix;
+    glm::mat4 MVPMatrix;
+
+
+    ///// DATAS 
+    glimac::Sphere sphr(1,16,32);
+
+
+    // pass the vertex infos to the vbo
+    GLuint vbo; 
+    glGenBuffers(1, &vbo);
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sphr.getVertexCount()*sizeof(glimac::Sphere),sphr.getDataPointer());
+
+    glBindBuffer(GL_ARRAY_BUFFER,0);
+
+
+    // setup the vao
+    GLuint vao;
+    const GLuint VERTEX_ATTR_POSITION = 0;
+    const GLuint NORMAL_ATTR_POSITION = 1;
+    const GLuint TEXTURE_ATTR_POSITION = 2;
+
+    glGenVertexArrays(1,&vao);
+    glBindVertexArray(vao);
+    glVertexAttribPointer(VERTEX_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, position));
+    glVertexAttribPointer(NORMAL_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, normal));
+    glVertexAttribPointer(TEXTURE_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex,    texCoords));
+
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
-        glClearColor(0.f, 0.75f, 0.75f, 1.f);
+        glClearColor(0.75f, 0.f, 0.75f, 1.f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         /* Swap front and back buffers */

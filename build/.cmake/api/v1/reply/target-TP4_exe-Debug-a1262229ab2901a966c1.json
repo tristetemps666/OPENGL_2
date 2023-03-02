@@ -180,7 +180,7 @@
 			"language" : "CXX",
 			"sourceIndexes" : 
 			[
-				0
+				2
 			]
 		}
 	],
@@ -257,27 +257,36 @@
 	"sourceGroups" : 
 	[
 		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1
+			]
+		},
+		{
 			"name" : "Source Files",
 			"sourceIndexes" : 
 			[
-				0
+				2
 			]
 		},
 		{
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				1,
-				2,
-				4
+				3,
+				4,
+				5,
+				7
 			]
 		},
 		{
 			"name" : "Object Files",
 			"sourceIndexes" : 
 			[
-				3,
-				5
+				6,
+				8
 			]
 		}
 	],
@@ -285,34 +294,49 @@
 	[
 		{
 			"backtrace" : 6,
-			"compileGroupIndex" : 0,
-			"path" : "TP4/main.cpp",
+			"path" : "TP4/Transform2D.hpp",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 6,
-			"path" : "TP4/shaders/shader.fs.glsl",
+			"path" : "TP4/Vertex2Duv.hpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 6,
+			"compileGroupIndex" : 0,
+			"path" : "TP4/main.cpp",
 			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 6,
+			"path" : "TP4/shaders/tex2D.fs.glsl",
+			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 6,
+			"path" : "TP4/shaders/tex2D.vs.glsl",
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 9,
 			"path" : "assets/models/cornell_box.mtl",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 11,
 			"path" : "assets/models/cornell_box.obj",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 3
 		},
 		{
 			"backtrace" : 13,
 			"path" : "assets/models/cube.mtl",
-			"sourceGroupIndex" : 1
+			"sourceGroupIndex" : 2
 		},
 		{
 			"backtrace" : 15,
 			"path" : "assets/models/cube.obj",
-			"sourceGroupIndex" : 2
+			"sourceGroupIndex" : 3
 		}
 	],
 	"type" : "EXECUTABLE"
