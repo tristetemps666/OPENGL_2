@@ -7,7 +7,7 @@ in vec2 texCoord;
 out vec3 fFragColor;
 
 void main(){
-    fFragColor = vertexNormal;
-    fFragColor = vec3(1.);
+    fFragColor = normalize(vertexNormal);
+    fFragColor = vec3(texCoord,0);
 
 }

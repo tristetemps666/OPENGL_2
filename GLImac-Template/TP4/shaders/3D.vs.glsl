@@ -20,7 +20,7 @@ void main(){
 
     // homogène
     vec4 HvertexPos = vec4(aVertexPosition,1.);
-    vec4 HvertexNormal = vec4(aVertexNormal,1.);
+    vec4 HvertexNormal = vec4(aVertexNormal,0.);
 
     // position de sortie
     texCoord = aVertexUv;

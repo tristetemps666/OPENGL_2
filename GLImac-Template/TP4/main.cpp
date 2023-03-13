@@ -16,8 +16,8 @@
 #include <glimac/glm.hpp>
 #include <glimac/Sphere.hpp>
 
-int window_width  = 1280;
-int window_height = 720;
+int window_width  = 800;
+int window_height = 600;
 
 static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/)
 {
@@ -84,7 +84,6 @@ int main(int argc, char* argv[])
 
 
 
-    glEnable(GL_DEPTH_TEST); 
 
 
     // setup the shaders
@@ -103,21 +102,33 @@ int main(int argc, char* argv[])
     GLint Normal_location = glGetUniformLocation(program.getGLId(),"uNormalMatrix");
 
 
+    glEnable(GL_DEPTH_TEST);
 
 
     // MATRIX
     glm::mat4 ProjMatrix;
     glm::mat4 MVMatrix;
     glm::mat4 NormalMatrix;
+
     glm::mat4 MVPMatrix;
 
     // calculate them
-    MVMatrix = glm::translate(MVMatrix,glm::vec3(0,0,-5));
-    MVPMatrix = ProjMatrix*MVMatrix;
-    ProjMatrix = glm::perspective(glm::radians(70.f),
+    MVMatrix = glm::translate(glm::mat4(1),glm::vec3(0,0,-5));
+
+    ProjMatrix = glm::perspective<float>(glm::radians(70.f),
                                    aspectRatio
                                    ,0.1f,100.f);
+
+    MVPMatrix = ProjMatrix*MVMatrix;
     NormalMatrix =  glm::transpose(glm::inverse(MVMatrix)); // transforms tha affect normals
+
+
+    
+    std::cout << "Proj : " << ProjMatrix << std::endl;
+
+    std::cout << " MVP  : " <<  MVPMatrix << std::endl;
+    std::cout << " MV  : " <<  MVMatrix << std::endl;
+    std::cout << " Normal  : " <<  NormalMatrix << std::endl;
 
 
     ///// DATAS 
@@ -136,40 +147,55 @@ int main(int argc, char* argv[])
 
     // setup the vao
     GLuint vao;
+    glGenVertexArrays(1,&vao);
+    glBindVertexArray(vao);
+
     const GLuint VERTEX_ATTR_POSITION = 0;
     const GLuint NORMAL_ATTR_POSITION = 1;
     const GLuint TEXTURE_ATTR_POSITION = 2;
 
-    glGenVertexArrays(1,&vao);
-    glBindVertexArray(vao);
+    glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
+    glEnableVertexAttribArray(NORMAL_ATTR_POSITION);
+    glEnableVertexAttribArray(TEXTURE_ATTR_POSITION);
+
+
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
     glVertexAttribPointer(VERTEX_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, position));
     glVertexAttribPointer(NORMAL_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, normal));
     glVertexAttribPointer(TEXTURE_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, texCoords));
 
+    glBindBuffer(GL_ARRAY_BUFFER,0);
+    glBindVertexArray(0);
+
+
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // update matrix uniforms
         // send it to the shader
-        glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(MVPMatrix));
-        glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(MVMatrix));
-        glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(NormalMatrix));
+
+        glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(glm::rotate(MVMatrix,(float)glfwGetTime(),glm::vec3(0,1,0))));
+        glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(glm::rotate(MVPMatrix,(float)glfwGetTime(),glm::vec3(0,1,0))));
+        glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(glm::rotate(NormalMatrix,(float)glfwGetTime(),glm::vec3(0,1,0))));
 
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES,0,sphr.getVertexCount());
-        
 
-        glClearColor(0.75f, 0.f, 0.75f, 1.f);
+        glBindVertexArray(0);
+
+
+        //glClearColor(0.f, 0.f, 0.f, 1.f);
         
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
         /* Poll for and process events */
         glfwPollEvents();
     }
-
+    glDeleteBuffers(1,&vbo);
+    glDeleteVertexArrays(1,&vao);
     glfwTerminate();
     return 0;
 }
