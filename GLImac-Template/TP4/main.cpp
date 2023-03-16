@@ -16,8 +16,12 @@
 #include <glimac/glm.hpp>
 #include <glimac/Sphere.hpp>
 
+#include "random_sphere.hpp"
+
 int window_width  = 800;
 int window_height = 600;
+
+
 
 static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/)
 {
@@ -96,6 +100,8 @@ int main(int argc, char* argv[])
 
     program.use();
 
+    glimac::FilePath relative_path = applicationPath.dirPath()+".."+".."+"..";
+
     // get uniforms values
     GLint MVP_location = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
     GLint MV_location = glGetUniformLocation(program.getGLId(), "uMVMatrix");
@@ -168,31 +174,115 @@ int main(int argc, char* argv[])
     glBindBuffer(GL_ARRAY_BUFFER,0);
     glBindVertexArray(0);
 
+    std::unique_ptr<glimac::Image> moon_ptr = glimac::loadImage(relative_path+"assets/texture/MoonMap.jpg");
+    if(moon_ptr == nullptr) std::cout << "null";
 
+    std::unique_ptr<glimac::Image> earth_ptr = glimac::loadImage(relative_path+"assets/texture/EarthMap.jpg");
+    if(earth_ptr == nullptr) std::cout << "null";
+
+    std::unique_ptr<glimac::Image> cloud_ptr = glimac::loadImage(relative_path+"assets/texture/CloudMap.jpg");
+    if(earth_ptr == nullptr) std::cout << "null";
+
+
+    // MOON    
+    GLuint vto_moon;
+    glGenTextures(1,&vto_moon);
+    glBindTexture(GL_TEXTURE_2D, vto_moon);
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,moon_ptr.get()->getWidth(),moon_ptr.get()->getHeight(),0,GL_RGBA,GL_FLOAT,moon_ptr.get()->getPixels());
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glBindTexture(GL_TEXTURE_2D,0);
+
+
+    // EARTH    
+
+    GLuint vto_earth;
+    glGenTextures(1,&vto_earth);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, vto_earth);
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,earth_ptr.get()->getWidth(),earth_ptr.get()->getHeight(),0,GL_RGBA,GL_FLOAT,earth_ptr.get()->getPixels());
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glBindTexture(GL_TEXTURE_2D,0);
+
+
+    // CLOUD
+
+    // GLuint vto_cloud;
+    // glGenTextures(1,&vto_cloud);
+    // glActiveTexture(GL_TEXTURE1);
+    // glBindTexture(GL_TEXTURE_2D, vto_cloud);
+    // glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,cloud_ptr.get()->getWidth(),cloud_ptr.get()->getHeight(),0,GL_RGBA,GL_FLOAT,cloud_ptr.get()->getPixels());
+
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    // glBindTexture(GL_TEXTURE_2D,0);
+
+    GLuint texLoc =glGetUniformLocation(program.getGLId(),"uTexture");
+
+    float delta_time = 0.;
+
+
+    auto list_axis = generate_spherical_vector(10,0.5);
+    auto list_pos = generate_spherical_vector(10,2);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
+        float start_time = (float)glfwGetTime();
+
+        std::cout << delta_time<< std::endl;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glClearColor(0.5f, 1.f, 0.5f, 1.f);
 
-        // update matrix uniforms
-        // send it to the shader
-
-        glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(glm::rotate(MVMatrix,(float)glfwGetTime(),glm::vec3(0,1,0))));
-        glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(glm::rotate(MVPMatrix,(float)glfwGetTime(),glm::vec3(0,1,0))));
-        glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(glm::rotate(NormalMatrix,(float)glfwGetTime(),glm::vec3(0,1,0))));
+        glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(MVMatrix));
+        glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(MVPMatrix));
+        glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(NormalMatrix));
 
         glBindVertexArray(vao);
+        glBindTexture(GL_TEXTURE_2D, vto_earth);
+        glUniform1i(texLoc,0);
         glDrawArrays(GL_TRIANGLES,0,sphr.getVertexCount());
+        glBindTexture(GL_TEXTURE_2D,0);
+
+
+        for(unsigned int i=0; i< list_axis.size()-1; i++){
+            auto axis = list_axis[i];
+            auto start_pos = list_pos[i];
+
+            std::cout << "oui";
+            glm::mat4 mat = get_transformations(start_time,MVMatrix,axis,start_pos);
+            // MVPMatrix = ProjMatrix*mat;
+
+            glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(mat));
+            glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(ProjMatrix*mat));
+            glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(NormalMatrix));
+
+            glBindVertexArray(vao);
+            glBindTexture(GL_TEXTURE_2D, vto_moon);
+            glUniform1i(texLoc,0);
+            glDrawArrays(GL_TRIANGLES,0,sphr.getVertexCount());
+            glBindTexture(GL_TEXTURE_2D,0);
+
+        }
+        std::cout << std::endl;
+
 
         glBindVertexArray(0);
 
 
-        //glClearColor(0.f, 0.f, 0.f, 1.f);
         
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
         /* Poll for and process events */
         glfwPollEvents();
+
+        float end_time = glfwGetTime();
+        delta_time = end_time-start_time;
     }
     glDeleteBuffers(1,&vbo);
     glDeleteVertexArrays(1,&vao);

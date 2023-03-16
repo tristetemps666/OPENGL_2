@@ -86,29 +86,39 @@ DUMMY_TP2/shaders/color2D.vs.glsl_TP2_exe: /home/6ima2/tristan.debeaune/Document
 	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_TP2/shaders/color2D.vs.glsl_TP2_exe
 	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP2/shaders/color2D.vs.glsl /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP2/shaders/color2D.vs.glsl
 
+DUMMY_assets/models/EarthMap.jpg_TP1_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/EarthMap.jpg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Copying \"assets/models/EarthMap.jpg\""
+	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_assets/models/EarthMap.jpg_TP1_exe
+	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/EarthMap.jpg /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/assets/models/EarthMap.jpg
+
+DUMMY_assets/models/MoonMap.jpg_TP1_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/MoonMap.jpg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Copying \"assets/models/MoonMap.jpg\""
+	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_assets/models/MoonMap.jpg_TP1_exe
+	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/MoonMap.jpg /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/assets/models/MoonMap.jpg
+
 DUMMY_assets/models/cornell_box.mtl_TP1_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cornell_box.mtl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Copying \"assets/models/cornell_box.mtl\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Copying \"assets/models/cornell_box.mtl\""
 	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_assets/models/cornell_box.mtl_TP1_exe
 	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cornell_box.mtl /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/assets/models/cornell_box.mtl
 
 DUMMY_assets/models/cornell_box.obj_TP1_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cornell_box.obj
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Copying \"assets/models/cornell_box.obj\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Copying \"assets/models/cornell_box.obj\""
 	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_assets/models/cornell_box.obj_TP1_exe
 	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cornell_box.obj /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/assets/models/cornell_box.obj
 
 DUMMY_assets/models/cube.mtl_TP1_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cube.mtl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Copying \"assets/models/cube.mtl\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Copying \"assets/models/cube.mtl\""
 	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_assets/models/cube.mtl_TP1_exe
 	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cube.mtl /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/assets/models/cube.mtl
 
 DUMMY_assets/models/cube.obj_TP1_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cube.obj
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Copying \"assets/models/cube.obj\""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Copying \"assets/models/cube.obj\""
 	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_assets/models/cube.obj_TP1_exe
 	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cube.obj /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/assets/models/cube.obj
 
 CMakeFiles/TP2_exe.dir/TP2/main.cpp.o: CMakeFiles/TP2_exe.dir/flags.make
 CMakeFiles/TP2_exe.dir/TP2/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP2/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/TP2_exe.dir/TP2/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/TP2_exe.dir/TP2/main.cpp.o"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/TP2_exe.dir/TP2/main.cpp.o -c /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP2/main.cpp
 
 CMakeFiles/TP2_exe.dir/TP2/main.cpp.i: cmake_force
@@ -134,7 +144,7 @@ TP2_exe_EXTERNAL_OBJECTS =
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP2_exe: /usr/lib/x86_64-linux-gnu/libm.so
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP2_exe: glimac/libglad.a
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP2_exe: CMakeFiles/TP2_exe.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP2_exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP2_exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/TP2_exe.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -148,6 +158,8 @@ CMakeFiles/TP2_exe.dir/clean:
 
 CMakeFiles/TP2_exe.dir/depend: DUMMY_TP2/shaders/color2D.fs.glsl_TP2_exe
 CMakeFiles/TP2_exe.dir/depend: DUMMY_TP2/shaders/color2D.vs.glsl_TP2_exe
+CMakeFiles/TP2_exe.dir/depend: DUMMY_assets/models/EarthMap.jpg_TP1_exe
+CMakeFiles/TP2_exe.dir/depend: DUMMY_assets/models/MoonMap.jpg_TP1_exe
 CMakeFiles/TP2_exe.dir/depend: DUMMY_assets/models/cornell_box.mtl_TP1_exe
 CMakeFiles/TP2_exe.dir/depend: DUMMY_assets/models/cornell_box.obj_TP1_exe
 CMakeFiles/TP2_exe.dir/depend: DUMMY_assets/models/cube.mtl_TP1_exe

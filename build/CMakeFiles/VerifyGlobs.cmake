@@ -78,8 +78,10 @@ endif()
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/*")
 set(OLD_GLOB
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/main.cpp"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/random_sphere.hpp"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/3D.vs.glsl"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/normal.fs.glsl"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex3D.fs.glsl"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -91,6 +93,7 @@ file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/6ima2/tristan.debeaune/
 set(OLD_GLOB
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/3D.vs.glsl"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/normal.fs.glsl"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex3D.fs.glsl"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
@@ -213,6 +216,8 @@ endif()
 # FILES at CMakeUtils/files_and_folders.cmake:43 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/*")
 set(OLD_GLOB
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/EarthMap.jpg"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/MoonMap.jpg"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cornell_box.mtl"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cornell_box.obj"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/assets/models/cube.mtl"

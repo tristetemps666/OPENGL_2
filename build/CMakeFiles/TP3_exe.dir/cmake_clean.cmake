@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TP3_exe.dir/TP3/main.cpp.o"
   "DUMMY_TP3/shaders/tex2D.fs.glsl_TP3_exe"
   "DUMMY_TP3/shaders/tex2D.vs.glsl_TP3_exe"
+  "DUMMY_assets/models/EarthMap.jpg_TP1_exe"
+  "DUMMY_assets/models/MoonMap.jpg_TP1_exe"
   "DUMMY_assets/models/cornell_box.mtl_TP1_exe"
   "DUMMY_assets/models/cornell_box.obj_TP1_exe"
   "DUMMY_assets/models/cube.mtl_TP1_exe"

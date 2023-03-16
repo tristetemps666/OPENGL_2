@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/TP2_exe.dir/TP2/main.cpp.o"
   "DUMMY_TP2/shaders/color2D.fs.glsl_TP2_exe"
   "DUMMY_TP2/shaders/color2D.vs.glsl_TP2_exe"
+  "DUMMY_assets/models/EarthMap.jpg_TP1_exe"
+  "DUMMY_assets/models/MoonMap.jpg_TP1_exe"
   "DUMMY_assets/models/cornell_box.mtl_TP1_exe"
   "DUMMY_assets/models/cornell_box.obj_TP1_exe"
   "DUMMY_assets/models/cube.mtl_TP1_exe"
