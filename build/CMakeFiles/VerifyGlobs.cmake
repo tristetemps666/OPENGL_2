@@ -83,6 +83,7 @@ set(OLD_GLOB
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/3D.vs.glsl"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/multiTex3D.fs.glsl"
   "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex3D.fs.glsl"
+  "/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/track_ball_camera.hpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

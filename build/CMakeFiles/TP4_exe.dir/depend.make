@@ -4,6 +4,7 @@
 CMakeFiles/TP4_exe.dir/TP4/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/main.cpp
 CMakeFiles/TP4_exe.dir/TP4/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/random_sphere.hpp
 CMakeFiles/TP4_exe.dir/TP4/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shader_program.hpp
+CMakeFiles/TP4_exe.dir/TP4/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/track_ball_camera.hpp
 CMakeFiles/TP4_exe.dir/TP4/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/FilePath.hpp
 CMakeFiles/TP4_exe.dir/TP4/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/Image.hpp
 CMakeFiles/TP4_exe.dir/TP4/main.cpp.o: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/Program.hpp

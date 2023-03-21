@@ -18,11 +18,12 @@
 
 #include "random_sphere.hpp"
 #include "shader_program.hpp"
+#include "track_ball_camera.hpp"
 
 int window_width  = 800;
 int window_height = 600;
 
-
+// struture de la souris
 
 static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/)
 {
@@ -30,6 +31,7 @@ static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, 
 
 static void mouse_button_callback(GLFWwindow* /*window*/, int /*button*/, int /*action*/, int /*mods*/)
 {
+
 }
 
 static void scroll_callback(GLFWwindow* /*window*/, double /*xoffset*/, double /*yoffset*/)
@@ -51,6 +53,14 @@ static float aspectRatio = 1.f * window_width / window_height;
 
 int main(int argc, char* argv[])
 {
+
+    TrackballCamera trackBallCamera = TrackballCamera(-5,0,0);
+    std::cout<<trackBallCamera.getViewMatrix() << std::endl;
+
+    trackBallCamera.rotateLeft(90);
+    std::cout<<trackBallCamera.getViewMatrix() << std::endl;
+
+
     std::cout << argc;
     //  argc;
     /* Initialize the library */
@@ -97,21 +107,8 @@ int main(int argc, char* argv[])
     EarthProgram earthProgram(applicationPath);
     MoonProgram moonProgram(applicationPath);
 
-    // const glimac::FilePath vs_path = applicationPath.dirPath() + "TP4/shaders/3D.vs.glsl";
-
-    // const glimac::FilePath fs_path = applicationPath.dirPath() + "TP4/shaders/normal.fs.glsl";
-
-    // glimac::Program program = glimac::loadProgram(vs_path, fs_path);
-
-    // program.use();
 
     glimac::FilePath relative_path = applicationPath.dirPath()+".."+".."+"..";
-
-    // // get uniforms values
-    // GLint MVP_location = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
-    // GLint MV_location = glGetUniformLocation(program.getGLId(), "uMVMatrix");
-    // GLint Normal_location = glGetUniformLocation(program.getGLId(),"uNormalMatrix");
-
 
     glEnable(GL_DEPTH_TEST);
 
@@ -135,11 +132,11 @@ int main(int argc, char* argv[])
 
 
     
-    std::cout << "Proj : " << ProjMatrix << std::endl;
+    // std::cout << "Proj : " << ProjMatrix << std::endl;
 
-    std::cout << " MVP  : " <<  MVPMatrix << std::endl;
-    std::cout << " MV  : " <<  MVMatrix << std::endl;
-    std::cout << " Normal  : " <<  NormalMatrix << std::endl;
+    // std::cout << " MVP  : " <<  MVPMatrix << std::endl;
+    // std::cout << " MV  : " <<  MVMatrix << std::endl;
+    // std::cout << " Normal  : " <<  NormalMatrix << std::endl;
 
 
     ///// DATAS 
@@ -228,26 +225,32 @@ int main(int argc, char* argv[])
 
     glBindTexture(GL_TEXTURE_2D,0);
 
-    // GLuint texCloudLoc = glGetUniformLocation(program.getGLId(),"utextureCloud");
-
-    // GLuint texLoc =glGetUniformLocation(program.getGLId(),"uTexture");
-    // GLuint texCloudLoc =glGetUniformLocation(program.getGLId(),"utextureCloud");
-
     float delta_time = 0.;
+    std::cout << delta_time;
 
 
     auto list_axis = generate_spherical_vector(10,0.5);
     auto list_pos = generate_spherical_vector(10,2);
 
 
+    glm::dvec2 mousePos;
+    glm::dvec2 mousePosStart;
+    glm::dvec2 mousePosEnd;
 
+    glm::dvec2 mousePosDelta;
 
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
+        glfwGetCursorPos(window, &mousePos.x,&mousePos.y);
+        mousePosStart = mousePos;
+
+        std::cout << "mouse start" << mousePosStart << std::endl;
+        std::cout << "mouse end" << mousePosEnd << std::endl;
+        std::cout << "mouse start" << mousePosDelta << std::endl << std::endl;
+
         float start_time = (float)glfwGetTime();
 
-        std::cout << delta_time<< std::endl;
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             glClearColor(0.5f, 1.f, 0.5f, 1.f);
 
@@ -265,9 +268,6 @@ int main(int argc, char* argv[])
 	        glm::value_ptr(ProjMatrix * earthMVMatrix));
 
 
-        // glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(MVMatrix));
-        // glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(MVPMatrix));
-        // glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(NormalMatrix));
 
         glBindVertexArray(vao);
                 // set the cloud :
@@ -295,7 +295,6 @@ int main(int argc, char* argv[])
             auto axis = list_axis[i];
             auto start_pos = list_pos[i];
 
-            std::cout << "oui";
             glm::mat4 mat = get_transformations(start_time,MVMatrix,axis,start_pos);
 
             glUniformMatrix4fv(moonProgram.uMVMatrix, 1, GL_FALSE, 
@@ -304,8 +303,6 @@ int main(int argc, char* argv[])
                 glm::value_ptr(glm::transpose(glm::inverse(mat))));
             glUniformMatrix4fv(moonProgram.uMVPMatrix, 1, GL_FALSE, 
                 glm::value_ptr(ProjMatrix * mat));
-            // MVPMatrix = ProjMatrix*mat;
-
             
             glBindVertexArray(vao);
 
@@ -316,7 +313,6 @@ int main(int argc, char* argv[])
             glBindTexture(GL_TEXTURE_2D,0);
 
         }
-        std::cout << std::endl;
 
 
         glBindVertexArray(0);
@@ -328,11 +324,23 @@ int main(int argc, char* argv[])
         /* Poll for and process events */
         glfwPollEvents();
 
+        // GET THE DELTAS
         float end_time = glfwGetTime();
         delta_time = end_time-start_time;
+
+        glfwGetCursorPos(window, &mousePosEnd.x,&mousePosEnd.y);
+
+        mousePosDelta = mousePosEnd-mousePosStart;
+
+        
     }
     glDeleteBuffers(1,&vbo);
     glDeleteVertexArrays(1,&vao);
     glfwTerminate();
     return 0;
+}
+
+
+void updateCamera(){
+
 }

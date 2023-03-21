@@ -41,6 +41,8 @@ random_sphere.hpp
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/random_sphere.hpp
 shader_program.hpp
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shader_program.hpp
+track_ball_camera.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/track_ball_camera.hpp
 
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/random_sphere.hpp
 algorithm
@@ -108,6 +110,34 @@ glimac/Program.hpp
 glimac/glm.hpp
 -
 glimac/Sphere.hpp
+-
+
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/track_ball_camera.hpp
+algorithm
+-
+iostream
+-
+array
+-
+cmath
+-
+utility
+-
+vector
+-
+glimac/Image.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/glimac/Image.hpp
+glm/ext/matrix_clip_space.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/glm/ext/matrix_clip_space.hpp
+glm/ext/scalar_constants.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/glm/ext/scalar_constants.hpp
+glm/fwd.hpp
+/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/glm/fwd.hpp
+GLFW/glfw3.h
+-
+glad/glad.h
+-
+glimac/glm.hpp
 -
 
 /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/glimac/glimac/FilePath.hpp

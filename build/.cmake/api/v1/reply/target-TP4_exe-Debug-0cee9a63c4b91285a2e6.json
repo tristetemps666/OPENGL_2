@@ -292,7 +292,8 @@
 			"sourceIndexes" : 
 			[
 				1,
-				2
+				2,
+				6
 			]
 		},
 		{
@@ -302,24 +303,24 @@
 				3,
 				4,
 				5,
-				8,
-				10
+				9,
+				11
 			]
 		},
 		{
 			"name" : "Resources",
 			"sourceIndexes" : 
 			[
-				6,
-				7
+				7,
+				8
 			]
 		},
 		{
 			"name" : "Object Files",
 			"sourceIndexes" : 
 			[
-				9,
-				11
+				10,
+				12
 			]
 		}
 	],
@@ -355,6 +356,11 @@
 			"backtrace" : 6,
 			"path" : "TP4/shaders/tex3D.fs.glsl",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 6,
+			"path" : "TP4/track_ball_camera.hpp",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 9,
