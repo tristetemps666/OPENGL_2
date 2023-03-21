@@ -81,10 +81,10 @@ DUMMY_TP4/shaders/3D.vs.glsl_TP4_exe: /home/6ima2/tristan.debeaune/Documents/pro
 	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_TP4/shaders/3D.vs.glsl_TP4_exe
 	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/3D.vs.glsl /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP4/shaders/3D.vs.glsl
 
-DUMMY_TP4/shaders/normal.fs.glsl_TP4_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/normal.fs.glsl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Copying \"TP4/shaders/normal.fs.glsl\""
-	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_TP4/shaders/normal.fs.glsl_TP4_exe
-	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/normal.fs.glsl /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP4/shaders/normal.fs.glsl
+DUMMY_TP4/shaders/multiTex3D.fs.glsl_TP4_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/multiTex3D.fs.glsl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Copying \"TP4/shaders/multiTex3D.fs.glsl\""
+	/usr/bin/cmake -E make_directory /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/DUMMY_TP4/shaders/multiTex3D.fs.glsl_TP4_exe
+	/usr/bin/cmake -E copy /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/multiTex3D.fs.glsl /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP4/shaders/multiTex3D.fs.glsl
 
 DUMMY_TP4/shaders/tex3D.fs.glsl_TP4_exe: /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/TP4/shaders/tex3D.fs.glsl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Copying \"TP4/shaders/tex3D.fs.glsl\""
@@ -162,7 +162,7 @@ CMakeFiles/TP4_exe.dir/clean:
 .PHONY : CMakeFiles/TP4_exe.dir/clean
 
 CMakeFiles/TP4_exe.dir/depend: DUMMY_TP4/shaders/3D.vs.glsl_TP4_exe
-CMakeFiles/TP4_exe.dir/depend: DUMMY_TP4/shaders/normal.fs.glsl_TP4_exe
+CMakeFiles/TP4_exe.dir/depend: DUMMY_TP4/shaders/multiTex3D.fs.glsl_TP4_exe
 CMakeFiles/TP4_exe.dir/depend: DUMMY_TP4/shaders/tex3D.fs.glsl_TP4_exe
 CMakeFiles/TP4_exe.dir/depend: DUMMY_assets/models/EarthMap.jpg_TP1_exe
 CMakeFiles/TP4_exe.dir/depend: DUMMY_assets/models/MoonMap.jpg_TP1_exe

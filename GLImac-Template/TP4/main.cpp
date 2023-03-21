@@ -17,6 +17,7 @@
 #include <glimac/Sphere.hpp>
 
 #include "random_sphere.hpp"
+#include "shader_program.hpp"
 
 int window_width  = 800;
 int window_height = 600;
@@ -92,20 +93,24 @@ int main(int argc, char* argv[])
 
     // setup the shaders
     glimac::FilePath       applicationPath(argv[0]);
-    const glimac::FilePath vs_path = applicationPath.dirPath() + "TP4/shaders/3D.vs.glsl";
 
-    const glimac::FilePath fs_path = applicationPath.dirPath() + "TP4/shaders/normal.fs.glsl";
+    EarthProgram earthProgram(applicationPath);
+    MoonProgram moonProgram(applicationPath);
 
-    glimac::Program program = glimac::loadProgram(vs_path, fs_path);
+    // const glimac::FilePath vs_path = applicationPath.dirPath() + "TP4/shaders/3D.vs.glsl";
 
-    program.use();
+    // const glimac::FilePath fs_path = applicationPath.dirPath() + "TP4/shaders/normal.fs.glsl";
+
+    // glimac::Program program = glimac::loadProgram(vs_path, fs_path);
+
+    // program.use();
 
     glimac::FilePath relative_path = applicationPath.dirPath()+".."+".."+"..";
 
-    // get uniforms values
-    GLint MVP_location = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
-    GLint MV_location = glGetUniformLocation(program.getGLId(), "uMVMatrix");
-    GLint Normal_location = glGetUniformLocation(program.getGLId(),"uNormalMatrix");
+    // // get uniforms values
+    // GLint MVP_location = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
+    // GLint MV_location = glGetUniformLocation(program.getGLId(), "uMVMatrix");
+    // GLint Normal_location = glGetUniformLocation(program.getGLId(),"uNormalMatrix");
 
 
     glEnable(GL_DEPTH_TEST);
@@ -212,24 +217,31 @@ int main(int argc, char* argv[])
 
     // CLOUD
 
-    // GLuint vto_cloud;
-    // glGenTextures(1,&vto_cloud);
-    // glActiveTexture(GL_TEXTURE1);
-    // glBindTexture(GL_TEXTURE_2D, vto_cloud);
-    // glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,cloud_ptr.get()->getWidth(),cloud_ptr.get()->getHeight(),0,GL_RGBA,GL_FLOAT,cloud_ptr.get()->getPixels());
+    GLuint vto_cloud;
+    glGenTextures(1,&vto_cloud);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, vto_cloud);
+    glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,cloud_ptr.get()->getWidth(),cloud_ptr.get()->getHeight(),0,GL_RGBA,GL_FLOAT,cloud_ptr.get()->getPixels());
 
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-    // glBindTexture(GL_TEXTURE_2D,0);
+    glBindTexture(GL_TEXTURE_2D,0);
 
-    GLuint texLoc =glGetUniformLocation(program.getGLId(),"uTexture");
+    // GLuint texCloudLoc = glGetUniformLocation(program.getGLId(),"utextureCloud");
+
+    // GLuint texLoc =glGetUniformLocation(program.getGLId(),"uTexture");
+    // GLuint texCloudLoc =glGetUniformLocation(program.getGLId(),"utextureCloud");
 
     float delta_time = 0.;
 
 
     auto list_axis = generate_spherical_vector(10,0.5);
     auto list_pos = generate_spherical_vector(10,2);
+
+
+
+
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
@@ -239,16 +251,45 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             glClearColor(0.5f, 1.f, 0.5f, 1.f);
 
-        glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(MVMatrix));
-        glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(MVPMatrix));
-        glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(NormalMatrix));
+        // EARTH
+        earthProgram.m_Program.use();
+        glUniform1i(earthProgram.uEarthTexture, 0);
+        glUniform1i(earthProgram.uCloudTexture, 1);
+
+        glm::mat4 earthMVMatrix = glm::rotate(MVMatrix, start_time, glm::vec3(0, 1, 0));
+        glUniformMatrix4fv(earthProgram.uMVMatrix, 1, GL_FALSE, 
+	        glm::value_ptr(earthMVMatrix));
+        glUniformMatrix4fv(earthProgram.uNormalMatrix, 1, GL_FALSE, 
+	        glm::value_ptr(glm::transpose(glm::inverse(earthMVMatrix))));
+        glUniformMatrix4fv(earthProgram.uMVPMatrix, 1, GL_FALSE, 
+	        glm::value_ptr(ProjMatrix * earthMVMatrix));
+
+
+        // glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(MVMatrix));
+        // glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(MVPMatrix));
+        // glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(NormalMatrix));
 
         glBindVertexArray(vao);
+                // set the cloud :
+        glActiveTexture(GL_TEXTURE1);
+        glBindTexture(GL_TEXTURE_2D, vto_cloud);
+
+        glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, vto_earth);
-        glUniform1i(texLoc,0);
+
         glDrawArrays(GL_TRIANGLES,0,sphr.getVertexCount());
         glBindTexture(GL_TEXTURE_2D,0);
 
+
+
+        // Moon 
+        // set programme
+        moonProgram.m_Program.use();
+
+        // set the moon texture on the unit 1 and bind it
+        glUniform1i(moonProgram.uTexture, 0);
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, vto_moon);
 
         for(unsigned int i=0; i< list_axis.size()-1; i++){
             auto axis = list_axis[i];
@@ -256,15 +297,21 @@ int main(int argc, char* argv[])
 
             std::cout << "oui";
             glm::mat4 mat = get_transformations(start_time,MVMatrix,axis,start_pos);
+
+            glUniformMatrix4fv(moonProgram.uMVMatrix, 1, GL_FALSE, 
+                glm::value_ptr(mat));
+            glUniformMatrix4fv(moonProgram.uNormalMatrix, 1, GL_FALSE, 
+                glm::value_ptr(glm::transpose(glm::inverse(mat))));
+            glUniformMatrix4fv(moonProgram.uMVPMatrix, 1, GL_FALSE, 
+                glm::value_ptr(ProjMatrix * mat));
             // MVPMatrix = ProjMatrix*mat;
 
-            glUniformMatrix4fv(MV_location,1,false,glm::value_ptr(mat));
-            glUniformMatrix4fv(MVP_location,1,false,glm::value_ptr(ProjMatrix*mat));
-            glUniformMatrix4fv(Normal_location,1,false,glm::value_ptr(NormalMatrix));
-
+            
             glBindVertexArray(vao);
+
+            glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, vto_moon);
-            glUniform1i(texLoc,0);
+
             glDrawArrays(GL_TRIANGLES,0,sphr.getVertexCount());
             glBindTexture(GL_TEXTURE_2D,0);
 
