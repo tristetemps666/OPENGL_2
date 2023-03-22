@@ -19,23 +19,26 @@
 #include "random_sphere.hpp"
 #include "shader_program.hpp"
 #include "track_ball_camera.hpp"
+#include "free_camera.hpp"
+#include "Input_Movement.hpp"
 
 int window_width  = 800;
 int window_height = 600;
 
-// struture de la souris
-struct Mouse{
-    glm::dvec2 position {};
-    glm::dvec2 delta {};
-    double scroll{};
-};
 
 static Mouse mouse {};
 
+static MovementInput keyboard = MovementInput{.up_key = GLFW_KEY_W,
+                                              .down_key = GLFW_KEY_S,
+                                              .left_key = GLFW_KEY_A,
+                                              .right_key = GLFW_KEY_D};
+
 TrackballCamera trackBallCamera = TrackballCamera(-5,0,0);
+FreeCamera freeCam = FreeCamera();
 
 
-void updateCamera(TrackballCamera &cam, double delta = 0.);
+void updateTrackBallCamera(TrackballCamera &cam, double delta = 0.);
+void updateFreeCamera(FreeCamera &cam);
 
 static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/)
 {
@@ -62,7 +65,7 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 static void scroll_callback(GLFWwindow* /*window*/, double xoffset, double yoffset)
 {
     mouse.scroll = yoffset;
-    updateCamera(trackBallCamera,yoffset);
+    updateTrackBallCamera(trackBallCamera,yoffset);
 
     std::cout << mouse.scroll << std::endl;
 }
@@ -263,8 +266,16 @@ int main(int argc, char* argv[])
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
+        mouse.is_left_button_pressed = glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_LEFT);
+        keyboard.update_pressed_values(window);
+        
+        std::cout << "Up : " << (char)keyboard.up_key << " / "  << keyboard.up_pressed << std::endl;
+        std::cout << "down : " << (char)keyboard.down_key << " / " << keyboard.down_pressed << std::endl;
+        std::cout << "left : " << (char)keyboard.left_key << " / " << keyboard.left_pressed << std::endl;
+        std::cout << "right : " << (char)keyboard.right_key << " / " << keyboard.right_pressed << std::endl << std::endl;
+
         if (glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_LEFT)){
-            updateCamera(trackBallCamera);
+            updateTrackBallCamera(trackBallCamera);
         }
 
 
@@ -282,7 +293,9 @@ int main(int argc, char* argv[])
         glUniform1i(earthProgram.uEarthTexture, 0);
         glUniform1i(earthProgram.uCloudTexture, 1);
 
-        MVMatrix = trackBallCamera.getViewMatrix();
+        updateFreeCamera(freeCam);
+        // MVMatrix = trackBallCamera.getViewMatrix();
+        MVMatrix = freeCam.getViewMatrix();
         MVPMatrix = ProjMatrix*MVMatrix;
         NormalMatrix =  glm::transpose(glm::inverse(MVMatrix)); // transforms tha affect normals
 
@@ -369,9 +382,18 @@ int main(int argc, char* argv[])
 }
 
 
-void updateCamera(TrackballCamera &cam, double delta){
+void updateTrackBallCamera(TrackballCamera &cam, double delta){
     cam.rotateLeft(mouse.delta.x/100);
     cam.rotateUp(mouse.delta.y/100);
     cam.moveFront(delta);
-    std::cout << cam << std::endl;
+}
+
+void updateFreeCamera(FreeCamera &cam){ // only the mouse for now
+    if (mouse.is_left_button_pressed == 1){
+        cam.rotateLeft(-mouse.delta.y/4.);
+        cam.rotateFront(-mouse.delta.x/4.);
+    }
+
+    cam.moveFront((keyboard.up_pressed-keyboard.down_pressed)/10.);
+    cam.moveLeft((keyboard.left_pressed-keyboard.right_pressed)/10.);
 }
