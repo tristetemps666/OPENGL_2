@@ -6,7 +6,6 @@
 #include <cmath>
 #include <utility>
 #include <vector>
-#include "glimac/Image.hpp"
 #include "glm/ext/matrix_clip_space.hpp"
 #include "glm/ext/scalar_constants.hpp"
 #include "glm/fwd.hpp"
@@ -42,7 +41,7 @@ class TrackballCamera {
 
         glm::mat4 getViewMatrix()const{
             glm::mat4 mv(1);
-            mv = glm::translate(mv,glm::vec3(0.,0.,-m_fDistance));
+            mv = glm::translate(mv,glm::vec3(0.,0.,m_fDistance));
             mv = glm::rotate(mv,m_fAngleY,glm::vec3(0.,1.,0.));
             mv = glm::rotate(mv,m_fAngleX,glm::vec3(1.,0.,0.));
             return mv;

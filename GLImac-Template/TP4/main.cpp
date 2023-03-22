@@ -24,18 +24,47 @@ int window_width  = 800;
 int window_height = 600;
 
 // struture de la souris
+struct Mouse{
+    glm::dvec2 position {};
+    glm::dvec2 delta {};
+    double scroll{};
+};
+
+static Mouse mouse {};
+
+TrackballCamera trackBallCamera = TrackballCamera(-5,0,0);
+
+
+void updateCamera(TrackballCamera &cam, double delta = 0.);
 
 static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/)
 {
 }
 
-static void mouse_button_callback(GLFWwindow* /*window*/, int /*button*/, int /*action*/, int /*mods*/)
+void cursor_enter_callback(GLFWwindow *window,int entered){
+    if(entered) std::cout << "dans la window";
+    else std::cout << "hors de la window";
+}
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
+           
+        if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_REPEAT){
+            std::cout << "clic"<< std::endl;
+            trackBallCamera.rotateLeft(mouse.delta.x);
+            trackBallCamera.rotateUp(mouse.delta.y);
+
+            std::cout << trackBallCamera << std::endl << std::endl;
+        }
 
 }
 
-static void scroll_callback(GLFWwindow* /*window*/, double /*xoffset*/, double /*yoffset*/)
+static void scroll_callback(GLFWwindow* /*window*/, double xoffset, double yoffset)
 {
+    mouse.scroll = yoffset;
+    updateCamera(trackBallCamera,yoffset);
+
+    std::cout << mouse.scroll << std::endl;
 }
 
 static void cursor_position_callback(GLFWwindow* /*window*/, double /*xpos*/, double /*ypos*/)
@@ -54,14 +83,10 @@ static float aspectRatio = 1.f * window_width / window_height;
 int main(int argc, char* argv[])
 {
 
-    TrackballCamera trackBallCamera = TrackballCamera(-5,0,0);
-    std::cout<<trackBallCamera.getViewMatrix() << std::endl;
-
-    trackBallCamera.rotateLeft(90);
-    std::cout<<trackBallCamera.getViewMatrix() << std::endl;
 
 
-    std::cout << argc;
+
+
     //  argc;
     /* Initialize the library */
     if (!glfwInit()) {
@@ -84,6 +109,11 @@ int main(int argc, char* argv[])
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+    
+
+    
+
+
 
     /* Intialize glad (loads the OpenGL functions) */
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
@@ -91,11 +121,12 @@ int main(int argc, char* argv[])
     }
 
     /* Hook input callbacks */
-    glfwSetKeyCallback(window, &key_callback);
-    glfwSetMouseButtonCallback(window, &mouse_button_callback);
-    glfwSetScrollCallback(window, &scroll_callback);
-    glfwSetCursorPosCallback(window, &cursor_position_callback);
-    glfwSetWindowSizeCallback(window, &size_callback);
+    glfwSetKeyCallback(window, key_callback);
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+    glfwSetCursorPosCallback(window, cursor_position_callback);
+    glfwSetWindowSizeCallback(window, size_callback);
+    glfwSetCursorEnterCallback(window, cursor_enter_callback);
 
 
 
@@ -129,15 +160,6 @@ int main(int argc, char* argv[])
 
     MVPMatrix = ProjMatrix*MVMatrix;
     NormalMatrix =  glm::transpose(glm::inverse(MVMatrix)); // transforms tha affect normals
-
-
-    
-    // std::cout << "Proj : " << ProjMatrix << std::endl;
-
-    // std::cout << " MVP  : " <<  MVPMatrix << std::endl;
-    // std::cout << " MV  : " <<  MVMatrix << std::endl;
-    // std::cout << " Normal  : " <<  NormalMatrix << std::endl;
-
 
     ///// DATAS 
     glimac::Sphere sphr(1,16,32);
@@ -225,29 +247,30 @@ int main(int argc, char* argv[])
 
     glBindTexture(GL_TEXTURE_2D,0);
 
-    float delta_time = 0.;
-    std::cout << delta_time;
+    [[maybe_unused]] float delta_time = 0.;
 
 
     auto list_axis = generate_spherical_vector(10,0.5);
     auto list_pos = generate_spherical_vector(10,2);
 
 
-    glm::dvec2 mousePos;
     glm::dvec2 mousePosStart;
     glm::dvec2 mousePosEnd;
 
-    glm::dvec2 mousePosDelta;
 
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
-        glfwGetCursorPos(window, &mousePos.x,&mousePos.y);
-        mousePosStart = mousePos;
+        if (glfwGetMouseButton(window,GLFW_MOUSE_BUTTON_LEFT)){
+            updateCamera(trackBallCamera);
+        }
 
-        std::cout << "mouse start" << mousePosStart << std::endl;
-        std::cout << "mouse end" << mousePosEnd << std::endl;
-        std::cout << "mouse start" << mousePosDelta << std::endl << std::endl;
+
+        glfwGetCursorPos(window, &mouse.position.x,&mouse.position.y);
+        mousePosStart = mouse.position;
+
 
         float start_time = (float)glfwGetTime();
 
@@ -258,6 +281,11 @@ int main(int argc, char* argv[])
         earthProgram.m_Program.use();
         glUniform1i(earthProgram.uEarthTexture, 0);
         glUniform1i(earthProgram.uCloudTexture, 1);
+
+        MVMatrix = trackBallCamera.getViewMatrix();
+        MVPMatrix = ProjMatrix*MVMatrix;
+        NormalMatrix =  glm::transpose(glm::inverse(MVMatrix)); // transforms tha affect normals
+
 
         glm::mat4 earthMVMatrix = glm::rotate(MVMatrix, start_time, glm::vec3(0, 1, 0));
         glUniformMatrix4fv(earthProgram.uMVMatrix, 1, GL_FALSE, 
@@ -330,7 +358,7 @@ int main(int argc, char* argv[])
 
         glfwGetCursorPos(window, &mousePosEnd.x,&mousePosEnd.y);
 
-        mousePosDelta = mousePosEnd-mousePosStart;
+        mouse.delta = mousePosEnd-mousePosStart;
 
         
     }
@@ -341,6 +369,9 @@ int main(int argc, char* argv[])
 }
 
 
-void updateCamera(){
-
+void updateCamera(TrackballCamera &cam, double delta){
+    cam.rotateLeft(mouse.delta.x/100);
+    cam.rotateUp(mouse.delta.y/100);
+    cam.moveFront(delta);
+    std::cout << cam << std::endl;
 }
