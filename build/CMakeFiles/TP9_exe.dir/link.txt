@@ -1,1 +1,0 @@
-/usr/bin/clang++ -g CMakeFiles/TP9_exe.dir/TP9/main.cpp.o -o /home/6ima2/tristan.debeaune/Documents/prog_open_gl/OPENGL_2/GLImac-Template/bin/Debug/TP9_exe  glimac/libglimac.a glimac/third-party/glfw/src/libglfw3.a -lpthread /usr/lib/x86_64-linux-gnu/librt.so -lm -ldl glimac/libglad.a 
