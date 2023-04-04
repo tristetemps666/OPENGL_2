@@ -82,6 +82,7 @@ struct BlinnPhongProgram { // With point light
     // light
     GLuint uIncidentLight;
     GLuint uLightColor;
+    GLuint u_nb_light;
 
     BlinnPhongProgram(const glimac::FilePath& applicationPath)
         :
@@ -100,6 +101,7 @@ struct BlinnPhongProgram { // With point light
 
         uIncidentLight = glGetUniformLocation(m_Program.getGLId(), "w_i");
         uLightColor    = glGetUniformLocation(m_Program.getGLId(), "L_i");
+        u_nb_light     = glGetUniformLocation(m_Program.getGLId(), "nb_light");
     }
 
     void passMatrix(const glm::mat4& MV, const glm::mat4& ProjMatrix)
@@ -112,21 +114,32 @@ struct BlinnPhongProgram { // With point light
                            glm::value_ptr(ProjMatrix * MV));
     }
 
-    void passLight(const PointLight& light, const glm::mat4& viewMat)
+    void passLight(const std::vector<PointLight>& list_light, const glm::mat4& viewMat)
+
     {
-        // calculate incident vector in view coord
+        std::vector<glm::vec3> list_pos_view;
+        std::vector<glm::vec3> list_color;
 
-        glm::vec4 h_light_pos{light.position.x, light.position.y, light.position.z, 1};
-        glm::vec4 h_light_pos_view = viewMat * h_light_pos;
-        glm::vec3 light_pos_view{h_light_pos_view.x,
-                                 h_light_pos_view.y,
-                                 h_light_pos_view.z};
+        // setup data list
+        for (auto const& light : list_light) {
+            // calculate incident vector in view coord
+            glm::vec4 h_light_pos{light.position.x, light.position.y, light.position.z, 1};
+            glm::vec4 h_light_pos_view = viewMat * h_light_pos;
+            glm::vec3 light_pos_view{h_light_pos_view.x,
+                                     h_light_pos_view.y,
+                                     h_light_pos_view.z};
+            list_pos_view.push_back(light_pos_view);
+            list_color.push_back(light.color);
+        }
+        int nb_light = list_light.size();
 
-        glUniform3fv(uIncidentLight, 1, glm::value_ptr(light_pos_view));
-        glUniform3fv(uLightColor, 1, glm::value_ptr(light.color));
-        std::cout << light_pos_view << std::endl
-                  << std::endl
-                  << std::endl;
+        glUniform3fv(uIncidentLight, nb_light, (const GLfloat*)list_pos_view.data());
+        glUniform3fv(uLightColor, nb_light, (const GLfloat*)list_color.data());
+        glUniform1i(u_nb_light, nb_light);
+
+        // std::cout << light_pos_view << std::endl
+        //           << std::endl
+        //           << std::endl;
     }
 
     void passMaterial(Material& material)

@@ -196,7 +196,18 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     // add a light
     PointLight light{.position = glm::vec3(3., 2., 0.),
-                     .color    = glm::vec3(1., 1., 0.)};
+                     .color    = glm::vec3(1., 0., 0.)};
+
+    PointLight light2{.position = glm::vec3(0.1),
+                      .color    = glm::vec3(0, 0, 1)};
+
+    std::vector<PointLight> list_light;
+    list_light.push_back(light);
+    list_light.push_back(light2);
+
+    list_light.push_back(PointLight{
+        .position = glm::vec3(10., 10., 0.),
+        .color    = glm::vec3(1., 0., 1.)});
 
     // add a material for the moon
     Material material{.diffuse   = glm::vec3(0.2, 1., 0.2),
@@ -319,7 +330,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
             glm::mat4 mat = get_transformations(start_time, MVMatrix, axis, start_pos);
 
-            blinnPhongProgram.passLight(light, MVMatrix);
+            blinnPhongProgram.passLight(list_light, MVMatrix);
             blinnPhongProgram.passMaterial(material);
             blinnPhongProgram.passMatrix(mat, ProjMatrix);
             // glUniformMatrix4fv(moonProgram.uMVMatrix, 1, GL_FALSE,
@@ -373,6 +384,6 @@ void updateFreeCamera(FreeCamera& cam)
         cam.rotateFront(-mouse.delta.x / 4.);
     }
 
-    cam.moveFront((keyboard.up_pressed - keyboard.down_pressed) / 10.);
-    cam.moveLeft((keyboard.left_pressed - keyboard.right_pressed) / 10.);
+    cam.moveFront((keyboard.up_pressed - keyboard.down_pressed) / 500.);
+    cam.moveLeft((keyboard.left_pressed - keyboard.right_pressed) / 500.);
 }
