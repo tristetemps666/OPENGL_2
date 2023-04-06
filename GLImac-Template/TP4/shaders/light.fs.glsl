@@ -30,12 +30,13 @@ vec3 Blinn_Phong(int i)
     vec3 halfVector = normalize((w_o + light_dir) / 2.);
 
     vec3 diffuse = K_d * dot(light_dir, vertexNormal);
-    vec3 glossy  = K_s * (pow(dot(halfVector, vertexNormal), shininess));
+    vec3 glossy  = K_s * (pow(max(dot(halfVector, vertexNormal), 0.), shininess));
 
     float light_distance_i = distance(w_i[i], vertexPos);
 
     vec3 light_factor = intensity[i] * L_i[i] / (light_distance_i * light_distance_i);
 
+    // return glossy;
     return light_factor * (diffuse + glossy);
 }
 
