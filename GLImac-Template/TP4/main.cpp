@@ -28,10 +28,13 @@ int window_height = 600;
 
 static Mouse mouse{};
 
-static MovementInput keyboard = MovementInput{.up_key    = GLFW_KEY_W,
-                                              .down_key  = GLFW_KEY_S,
-                                              .left_key  = GLFW_KEY_A,
-                                              .right_key = GLFW_KEY_D};
+static MovementInput keyboard = MovementInput{
+    .forward_key  = GLFW_KEY_W,
+    .backward_key = GLFW_KEY_S,
+    .left_key     = GLFW_KEY_A,
+    .right_key    = GLFW_KEY_D,
+    .up_key       = GLFW_KEY_Q,
+    .down_key     = GLFW_KEY_E};
 
 TrackballCamera trackBallCamera = TrackballCamera(-5, 0, 0);
 FreeCamera      freeCam         = FreeCamera();
@@ -382,6 +385,7 @@ void updateFreeCamera(FreeCamera& cam)
         cam.rotateFront(-mouse.delta.x / 4.);
     }
 
-    cam.moveFront((keyboard.up_pressed - keyboard.down_pressed) / 500.);
+    cam.moveFront((keyboard.forward_pressed - keyboard.backward_pressed) / 500.);
     cam.moveLeft((keyboard.left_pressed - keyboard.right_pressed) / 500.);
+    cam.moveUp((keyboard.up_pressed - keyboard.down_pressed) / 500.);
 }
