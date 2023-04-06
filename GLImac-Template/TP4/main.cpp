@@ -195,19 +195,22 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         std::cout << "null";
 
     // add a light
-    PointLight light{.position = glm::vec3(3., 2., 0.),
-                     .color    = glm::vec3(1., 0., 0.)};
+    PointLight light{.position  = glm::vec3(3., 2., 0.),
+                     .color     = glm::vec3(1., 0., 0.),
+                     .intensity = 5.};
 
-    PointLight light2{.position = glm::vec3(0.1),
-                      .color    = glm::vec3(0, 0, 1)};
+    PointLight light2{.position  = glm::vec3(0.),
+                      .color     = glm::vec3(0, 0, 1),
+                      .intensity = 10.};
 
     std::vector<PointLight> list_light;
     list_light.push_back(light);
     list_light.push_back(light2);
 
-    list_light.push_back(PointLight{
-        .position = glm::vec3(10., 10., 0.),
-        .color    = glm::vec3(1., 0., 1.)});
+    // list_light.push_back(PointLight{
+    //     .position  = glm::vec3(10., 10., 0.),
+    //     .color     = glm::vec3(1., 0., 1.),
+    //     .intensity = 5.});
 
     // add a material for the moon
     Material material{.diffuse   = glm::vec3(0.2, 1., 0.2),

@@ -82,6 +82,7 @@ struct BlinnPhongProgram { // With point light
     // light
     GLuint uIncidentLight;
     GLuint uLightColor;
+    GLuint uLightIntensity;
     GLuint u_nb_light;
 
     BlinnPhongProgram(const glimac::FilePath& applicationPath)
@@ -99,9 +100,10 @@ struct BlinnPhongProgram { // With point light
         uGLossy    = glGetUniformLocation(m_Program.getGLId(), "K_s");
         uShininess = glGetUniformLocation(m_Program.getGLId(), "shininess");
 
-        uIncidentLight = glGetUniformLocation(m_Program.getGLId(), "w_i");
-        uLightColor    = glGetUniformLocation(m_Program.getGLId(), "L_i");
-        u_nb_light     = glGetUniformLocation(m_Program.getGLId(), "nb_light");
+        uIncidentLight  = glGetUniformLocation(m_Program.getGLId(), "w_i");
+        uLightColor     = glGetUniformLocation(m_Program.getGLId(), "L_i");
+        uLightIntensity = glGetUniformLocation(m_Program.getGLId(), "intensity");
+        u_nb_light      = glGetUniformLocation(m_Program.getGLId(), "nb_light");
     }
 
     void passMatrix(const glm::mat4& MV, const glm::mat4& ProjMatrix)
@@ -119,6 +121,7 @@ struct BlinnPhongProgram { // With point light
     {
         std::vector<glm::vec3> list_pos_view;
         std::vector<glm::vec3> list_color;
+        std::vector<float>     list_intensity;
 
         // setup data list
         for (auto const& light : list_light) {
@@ -128,13 +131,16 @@ struct BlinnPhongProgram { // With point light
             glm::vec3 light_pos_view{h_light_pos_view.x,
                                      h_light_pos_view.y,
                                      h_light_pos_view.z};
+
             list_pos_view.push_back(light_pos_view);
             list_color.push_back(light.color);
+            list_intensity.push_back(light.intensity);
         }
         int nb_light = list_light.size();
 
         glUniform3fv(uIncidentLight, nb_light, (const GLfloat*)list_pos_view.data());
         glUniform3fv(uLightColor, nb_light, (const GLfloat*)list_color.data());
+        glUniform1fv(uLightIntensity, nb_light, (const GLfloat*)list_intensity.data());
         glUniform1i(u_nb_light, nb_light);
 
         // std::cout << light_pos_view << std::endl

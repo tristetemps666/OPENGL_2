@@ -10,9 +10,10 @@ uniform sampler2D uTexture;
 out vec3 fFragColor;
 
 // LIGHTS DATA
-uniform vec3 w_i[256]; // position light
-uniform vec3 L_i[256]; // light color
-uniform int  nb_light;
+uniform vec3  w_i[256]; // position light
+uniform vec3  L_i[256]; // light color
+uniform float intensity[256];
+uniform int   nb_light;
 
 // MATERIAL DATA
 uniform vec3  K_d; // reflection coefficient (a color) DIFFUSE
@@ -31,7 +32,11 @@ vec3 Blinn_Phong(int i)
     vec3 diffuse = K_d * dot(light_dir, vertexNormal);
     vec3 glossy  = K_s * (pow(dot(halfVector, vertexNormal), shininess));
 
-    return L_i[i] * (diffuse + glossy);
+    float light_distance_i = distance(w_i[i], vertexPos);
+
+    vec3 light_factor = intensity[i] * L_i[i] / (light_distance_i * light_distance_i);
+
+    return light_factor * (diffuse + glossy);
 }
 
 void main()
