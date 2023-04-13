@@ -18,6 +18,7 @@
 #include <glimac/glm.hpp>
 #include "Input_Movement.hpp"
 #include "Material.hpp"
+#include "Mesh.hpp"
 #include "free_camera.hpp"
 #include "random_sphere.hpp"
 #include "shader_program.hpp"
@@ -153,37 +154,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
     ///// DATAS
     glimac::Sphere sphr(1, 16, 32);
-
-    // pass the vertex infos to the vbo
-    GLuint vbo;
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-    glBufferData(GL_ARRAY_BUFFER, sphr.getVertexCount() * sizeof(glimac::ShapeVertex), sphr.getDataPointer(), GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    // setup the vao
-    GLuint vao;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
-
-    const GLuint VERTEX_ATTR_POSITION  = 0;
-    const GLuint NORMAL_ATTR_POSITION  = 1;
-    const GLuint TEXTURE_ATTR_POSITION = 2;
-
-    glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
-    glEnableVertexAttribArray(NORMAL_ATTR_POSITION);
-    glEnableVertexAttribArray(TEXTURE_ATTR_POSITION);
-
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-
-    glVertexAttribPointer(VERTEX_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, position));
-    glVertexAttribPointer(NORMAL_ATTR_POSITION, 3, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, normal));
-    glVertexAttribPointer(TEXTURE_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(glimac::ShapeVertex), (const GLvoid*)offsetof(glimac::ShapeVertex, texCoords));
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindVertexArray(0);
+    Mesh           mesh(sphr);
 
     std::unique_ptr<glimac::Image> moon_ptr = glimac::loadImage(relative_path + "assets/texture/MoonMap.jpg");
     if (moon_ptr == nullptr)
@@ -284,7 +255,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         float start_time = (float)glfwGetTime();
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glClearColor(0.5f, 1.f, 0.5f, 1.f);
+        glClearColor(1.f, 0.f, 1.f, 1.f);
 
         // EARTH
         earthProgram.m_Program.use();
@@ -305,7 +276,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         glUniformMatrix4fv(earthProgram.uMVPMatrix, 1, GL_FALSE,
                            glm::value_ptr(ProjMatrix * earthMVMatrix));
 
-        glBindVertexArray(vao);
+        glBindVertexArray(mesh.get_vao());
         // set the cloud :
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, vto_cloud);
@@ -313,7 +284,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, vto_earth);
 
-        glDrawArrays(GL_TRIANGLES, 0, sphr.getVertexCount());
+        glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
         glBindTexture(GL_TEXTURE_2D, 0);
 
         // Moon
@@ -341,12 +312,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             // glUniformMatrix4fv(moonProgram.uMVPMatrix, 1, GL_FALSE,
             //     glm::value_ptr(ProjMatrix * mat));
 
-            glBindVertexArray(vao);
+            glBindVertexArray(mesh.get_vao());
 
             glActiveTexture(GL_TEXTURE0);
             glBindTexture(GL_TEXTURE_2D, vto_moon);
 
-            glDrawArrays(GL_TRIANGLES, 0, sphr.getVertexCount());
+            glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
             glBindTexture(GL_TEXTURE_2D, 0);
         }
 
@@ -365,8 +336,8 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
         mouse.delta = mousePosEnd - mousePosStart;
     }
-    glDeleteBuffers(1, &vbo);
-    glDeleteVertexArrays(1, &vao);
+    // glDeleteBuffers(1, get_vao_ptr());
+    // glDeleteVertexArrays(1, get_vbo_ptr());
     glfwTerminate();
     return 0;
 }

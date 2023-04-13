@@ -39,6 +39,14 @@ vec3 Blinn_Phong(int i)
     // return glossy;
     return light_factor * (diffuse + glossy);
 }
+vec3 fog()
+{
+    float dist = length(vertexPos);
+    dist /= 5.;
+
+    vec3 col = mix(vec3(0, 0, 0), vec3(1, 0., 1.), dist);
+    return col;
+}
 
 void main()
 {
