@@ -19,10 +19,12 @@
 #include "Input_Movement.hpp"
 #include "Material.hpp"
 #include "Mesh.hpp"
+#include "Texture.hpp"
 #include "free_camera.hpp"
 #include "random_sphere.hpp"
 #include "shader_program.hpp"
 #include "track_ball_camera.hpp"
+
 
 int window_width  = 800;
 int window_height = 600;
