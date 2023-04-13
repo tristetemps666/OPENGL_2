@@ -40,7 +40,7 @@ TrackballCamera trackBallCamera = TrackballCamera(-5, 0, 0);
 FreeCamera      freeCam         = FreeCamera();
 
 void updateTrackBallCamera(TrackballCamera& cam, double delta = 0.);
-void updateFreeCamera(FreeCamera& cam);
+void updateFreeCamera(FreeCamera& cam, const float& delta_time);
 
 static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/)
 {
@@ -269,10 +269,10 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         mouse.is_left_button_pressed = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
         keyboard.update_pressed_values(window);
 
-        // std::cout << "Up : " << (char)keyboard.up_key << " / " << keyboard.up_pressed << std::endl;
-        // std::cout << "down : " << (char)keyboard.down_key << " / " << keyboard.down_pressed << std::endl;
-        // std::cout << "left : " << (char)keyboard.left_key << " / " << keyboard.left_pressed << std::endl;
-        // std::cout << "right : " << (char)keyboard.right_key << " / " << keyboard.right_pressed << std::endl
+        std::cout << "Up : " << (char)keyboard.up_key << " / " << keyboard.up_pressed << std::endl;
+        std::cout << "down : " << (char)keyboard.down_key << " / " << keyboard.down_pressed << std::endl;
+        std::cout << "left : " << (char)keyboard.left_key << " / " << keyboard.left_pressed << std::endl;
+        std::cout << "right : " << (char)keyboard.right_key << " / " << keyboard.right_pressed << std::endl;
 
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT)) {
             updateTrackBallCamera(trackBallCamera);
@@ -291,7 +291,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         glUniform1i(earthProgram.uEarthTexture, 0);
         glUniform1i(earthProgram.uCloudTexture, 1);
 
-        updateFreeCamera(freeCam);
+        updateFreeCamera(freeCam, delta_time);
         // MVMatrix = trackBallCamera.getViewMatrix();
         MVMatrix     = freeCam.getViewMatrix();
         MVPMatrix    = ProjMatrix * MVMatrix;
@@ -378,14 +378,17 @@ void updateTrackBallCamera(TrackballCamera& cam, double delta)
     cam.moveFront(delta);
 }
 
-void updateFreeCamera(FreeCamera& cam)
+void updateFreeCamera(FreeCamera& cam, const float& delta_time)
 { // only the mouse for now
+
     if (mouse.is_left_button_pressed == 1) {
         cam.rotateLeft(-mouse.delta.y / 4.);
         cam.rotateFront(-mouse.delta.x / 4.);
     }
 
-    cam.moveFront((keyboard.forward_pressed - keyboard.backward_pressed) / 500.);
-    cam.moveLeft((keyboard.left_pressed - keyboard.right_pressed) / 500.);
-    cam.moveUp((keyboard.up_pressed - keyboard.down_pressed) / 500.);
+    std::cout << keyboard.left_pressed - keyboard.right_pressed << "\n \n";
+
+    cam.moveFront((keyboard.forward_pressed - keyboard.backward_pressed) * delta_time * 3.);
+    cam.moveLeft((keyboard.left_pressed - keyboard.right_pressed) * delta_time * 3.);
+    cam.moveUp((keyboard.up_pressed - keyboard.down_pressed) * delta_time * 3.);
 }
