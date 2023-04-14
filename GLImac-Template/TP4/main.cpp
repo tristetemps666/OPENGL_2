@@ -173,10 +173,17 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                       .color     = glm::vec3(0, 0, 1),
                       .intensity = 3.};
 
+    DirectionalLight dir_light{.direction = glm::vec3(-0.2),
+                               .color     = glm::vec3(0.2, 0.58, 0.6),
+                               .intensity = 2.};
+
     /// push them into the list
     std::vector<PointLight> list_light;
     list_light.push_back(light);
     list_light.push_back(light2);
+
+    std::vector<DirectionalLight> list_dir_light;
+    list_dir_light.push_back(dir_light);
 
     // add a material for the moon
     Material material{.diffuse   = glm::vec3(0.2, 1., 0.2),
@@ -260,7 +267,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
             glm::mat4 mat = get_transformations(start_time, MVMatrix, axis, start_pos);
 
-            blinnPhongProgram.passLight(list_light, MVMatrix);
+            blinnPhongProgram.passLight(list_light, list_dir_light, MVMatrix);
             blinnPhongProgram.passMaterial(material);
             blinnPhongProgram.passMatrix(mat, ProjMatrix);
 
