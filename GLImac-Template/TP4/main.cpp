@@ -25,7 +25,6 @@
 #include "shader_program.hpp"
 #include "track_ball_camera.hpp"
 
-
 int window_width  = 800;
 int window_height = 600;
 
@@ -43,7 +42,7 @@ TrackballCamera trackBallCamera = TrackballCamera(-5, 0, 0);
 FreeCamera      freeCam         = FreeCamera();
 
 void updateTrackBallCamera(TrackballCamera& cam, double delta = 0.);
-void updateFreeCamera(FreeCamera& cam, const float& delta_time);
+void debug_movement_input(MovementInput input);
 
 static void key_callback(GLFWwindow* /*window*/, int /*key*/, int /*scancode*/, int /*action*/, int /*mods*/)
 {
@@ -72,7 +71,7 @@ void mouse_button_callback([[maybe_unused]] GLFWwindow* window, int button, int 
 static void scroll_callback(GLFWwindow* /*window*/, [[maybe_unused]] double xoffset, [[maybe_unused]] double yoffset)
 {
     mouse.scroll = yoffset;
-    updateTrackBallCamera(trackBallCamera, yoffset);
+    trackBallCamera.updateTrackBallCamera(yoffset, mouse);
 
     std::cout << mouse.scroll << std::endl;
 }
@@ -158,17 +157,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     glimac::Sphere sphr(1, 16, 32);
     Mesh           mesh(sphr);
 
-    std::unique_ptr<glimac::Image> moon_ptr = glimac::loadImage(relative_path + "assets/texture/MoonMap.jpg");
-    if (moon_ptr == nullptr)
-        std::cout << "null";
+    /// TEXTURES
+    Texture moon_texture(relative_path + "assets/texture/MoonMap.jpg");
 
-    std::unique_ptr<glimac::Image> earth_ptr = glimac::loadImage(relative_path + "assets/texture/EarthMap.jpg");
-    if (earth_ptr == nullptr)
-        std::cout << "null";
+    Texture earth_texture(relative_path + "assets/texture/EarthMap.jpg");
 
-    std::unique_ptr<glimac::Image> cloud_ptr = glimac::loadImage(relative_path + "assets/texture/CloudMap.jpg");
-    if (earth_ptr == nullptr)
-        std::cout << "null";
+    Texture cloud_texture(relative_path + "assets/texture/CloudMap.jpg");
 
     // add a light
     PointLight light{.position  = glm::vec3(3., 2., 0.),
@@ -179,6 +173,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                       .color     = glm::vec3(0, 0, 1),
                       .intensity = 3.};
 
+    /// push them into the list
     std::vector<PointLight> list_light;
     list_light.push_back(light);
     list_light.push_back(light2);
@@ -188,43 +183,6 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
                       .reflexion = glm::vec3(0.5),
                       .glossy    = glm::vec3(0.5),
                       .shininess = 2.};
-
-    // MOON
-    GLuint vto_moon;
-    glGenTextures(1, &vto_moon);
-    glBindTexture(GL_TEXTURE_2D, vto_moon);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, moon_ptr.get()->getWidth(), moon_ptr.get()->getHeight(), 0, GL_RGBA, GL_FLOAT, moon_ptr.get()->getPixels());
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    glBindTexture(GL_TEXTURE_2D, 0);
-
-    // EARTH
-
-    GLuint vto_earth;
-    glGenTextures(1, &vto_earth);
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, vto_earth);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, earth_ptr.get()->getWidth(), earth_ptr.get()->getHeight(), 0, GL_RGBA, GL_FLOAT, earth_ptr.get()->getPixels());
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    glBindTexture(GL_TEXTURE_2D, 0);
-
-    // CLOUD
-
-    GLuint vto_cloud;
-    glGenTextures(1, &vto_cloud);
-    glActiveTexture(GL_TEXTURE1);
-    glBindTexture(GL_TEXTURE_2D, vto_cloud);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, cloud_ptr.get()->getWidth(), cloud_ptr.get()->getHeight(), 0, GL_RGBA, GL_FLOAT, cloud_ptr.get()->getPixels());
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    glBindTexture(GL_TEXTURE_2D, 0);
 
     [[maybe_unused]] float delta_time = 0.;
 
@@ -242,14 +200,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         mouse.is_left_button_pressed = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
         keyboard.update_pressed_values(window);
 
-        std::cout << "Up : " << (char)keyboard.up_key << " / " << keyboard.up_pressed << std::endl;
-        std::cout << "down : " << (char)keyboard.down_key << " / " << keyboard.down_pressed << std::endl;
-        std::cout << "left : " << (char)keyboard.left_key << " / " << keyboard.left_pressed << std::endl;
-        std::cout << "right : " << (char)keyboard.right_key << " / " << keyboard.right_pressed << std::endl;
-
         if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT)) {
-            updateTrackBallCamera(trackBallCamera);
+            trackBallCamera.updateTrackBallCamera(0.5, mouse);
         }
+
+        debug_movement_input(keyboard);
 
         glfwGetCursorPos(window, &mouse.position.x, &mouse.position.y);
         mousePosStart = mouse.position;
@@ -264,8 +219,9 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         glUniform1i(earthProgram.uEarthTexture, 0);
         glUniform1i(earthProgram.uCloudTexture, 1);
 
-        updateFreeCamera(freeCam, delta_time);
+        freeCam.updateFreeCamera(delta_time, mouse, keyboard);
         // MVMatrix = trackBallCamera.getViewMatrix();
+
         MVMatrix     = freeCam.getViewMatrix();
         MVPMatrix    = ProjMatrix * MVMatrix;
         NormalMatrix = glm::transpose(glm::inverse(MVMatrix)); // transforms tha affect normals
@@ -281,10 +237,10 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         glBindVertexArray(mesh.get_vao());
         // set the cloud :
         glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, vto_cloud);
+        glBindTexture(GL_TEXTURE_2D, cloud_texture.get_vto());
 
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, vto_earth);
+        glBindTexture(GL_TEXTURE_2D, earth_texture.get_vto());
 
         glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
         glBindTexture(GL_TEXTURE_2D, 0);
@@ -296,7 +252,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         // set the moon texture on the unit 1 and bind it
         glUniform1i(blinnPhongProgram.uTexture, 0);
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, vto_moon);
+        glBindTexture(GL_TEXTURE_2D, moon_texture.get_vto());
 
         for (unsigned int i = 0; i < list_axis.size() - 1; i++) {
             auto axis      = list_axis[i];
@@ -307,17 +263,11 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             blinnPhongProgram.passLight(list_light, MVMatrix);
             blinnPhongProgram.passMaterial(material);
             blinnPhongProgram.passMatrix(mat, ProjMatrix);
-            // glUniformMatrix4fv(moonProgram.uMVMatrix, 1, GL_FALSE,
-            //     glm::value_ptr(mat));
-            // glUniformMatrix4fv(moonProgram.uNormalMatrix, 1, GL_FALSE,
-            //     glm::value_ptr(glm::transpose(glm::inverse(mat))));
-            // glUniformMatrix4fv(moonProgram.uMVPMatrix, 1, GL_FALSE,
-            //     glm::value_ptr(ProjMatrix * mat));
 
             glBindVertexArray(mesh.get_vao());
 
             glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, vto_moon);
+            glBindTexture(GL_TEXTURE_2D, moon_texture.get_vto());
 
             glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
             glBindTexture(GL_TEXTURE_2D, 0);
@@ -344,24 +294,10 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     return 0;
 }
 
-void updateTrackBallCamera(TrackballCamera& cam, double delta)
+void debug_movement_input(MovementInput input)
 {
-    cam.rotateLeft(mouse.delta.x / 100);
-    cam.rotateUp(mouse.delta.y / 100);
-    cam.moveFront(delta);
-}
-
-void updateFreeCamera(FreeCamera& cam, const float& delta_time)
-{ // only the mouse for now
-
-    if (mouse.is_left_button_pressed == 1) {
-        cam.rotateLeft(-mouse.delta.y / 4.);
-        cam.rotateFront(-mouse.delta.x / 4.);
-    }
-
-    std::cout << keyboard.left_pressed - keyboard.right_pressed << "\n \n";
-
-    cam.moveFront((keyboard.forward_pressed - keyboard.backward_pressed) * delta_time * 3.);
-    cam.moveLeft((keyboard.left_pressed - keyboard.right_pressed) * delta_time * 3.);
-    cam.moveUp((keyboard.up_pressed - keyboard.down_pressed) * delta_time * 3.);
+    std::cout << "Up : " << (char)input.up_key << " / " << input.up_pressed << std::endl;
+    std::cout << "down : " << (char)input.down_key << " / " << input.down_pressed << std::endl;
+    std::cout << "left : " << (char)input.left_key << " / " << input.left_pressed << std::endl;
+    std::cout << "right : " << (char)input.right_key << " / " << input.right_pressed << std::endl;
 }

@@ -31,12 +31,36 @@ public:
     // TODO constructor from a file path (.obj)
     Texture(const glimac::FilePath& path)
     {
-        std::unique_ptr<glimac::Image> m_img_ptr = glimac::loadImage(path);
+        m_img_ptr = glimac::loadImage(path);
+        if (m_img_ptr == nullptr)
+            std::cout << "null"; // bad line, will be fixed with p6
+
         fill_vto(m_img_ptr, m_vto);
 
+        // parameters of the texture
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
         glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    GLuint get_vto()
+    {
+        return m_vto;
+    }
+
+    glm::vec4* get_img() const
+    {
+        return m_img_ptr->getPixels();
+    }
+
+    unsigned int get_width() const
+    {
+        return m_img_ptr->getWidth();
+    }
+
+    unsigned int get_height() const
+    {
+        return m_img_ptr->getHeight();
     }
 };
