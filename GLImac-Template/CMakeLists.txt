@@ -8,6 +8,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE})
 # Include glimac
 add_subdirectory(glimac)
 
+add_subdirectory(tinyobjloader)
+
 # Create a target for each TP
 function(setup_tp TP_NUMBER)
     set(TARGET_NAME ${TP_NUMBER}_exe)
@@ -28,6 +30,8 @@ function(setup_tp TP_NUMBER)
 
     # Add glimac as a dependency
     target_link_libraries(${TARGET_NAME} glimac)
+
+    target_link_libraries(${TARGET_NAME} tinyobjloader)
 
     # Copy the assets and the shaders to the output folder (where the executable is created)
     include("CMakeUtils/files_and_folders.cmake")

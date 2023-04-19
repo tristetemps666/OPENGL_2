@@ -156,6 +156,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     ///// DATAS
     glimac::Sphere sphr(1, 16, 32);
     Mesh           mesh(sphr);
+    Mesh           mesh_cube(relative_path + "assets/mesh/cube.obj");
 
     /// TEXTURES
     Texture moon_texture(relative_path + "assets/texture/MoonMap.jpg");
@@ -211,7 +212,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
             trackBallCamera.updateTrackBallCamera(0.5, mouse);
         }
 
-        debug_movement_input(keyboard);
+        // debug_movement_input(keyboard);
 
         glfwGetCursorPos(window, &mouse.position.x, &mouse.position.y);
         mousePosStart = mouse.position;
@@ -229,56 +230,60 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         freeCam.updateFreeCamera(delta_time, mouse, keyboard);
         // MVMatrix = trackBallCamera.getViewMatrix();
 
-        MVMatrix     = freeCam.getViewMatrix();
-        MVPMatrix    = ProjMatrix * MVMatrix;
+        // MVMatrix = freeCam.getViewMatrix();
+        // std::cout << MVMatrix << "\n \n \n";
+        MVPMatrix = ProjMatrix * MVMatrix;
+        std::cout << MVPMatrix << "\n \n \n";
         NormalMatrix = glm::transpose(glm::inverse(MVMatrix)); // transforms tha affect normals
 
-        glm::mat4 earthMVMatrix = glm::rotate(MVMatrix, start_time, glm::vec3(0, 1, 0));
-        glUniformMatrix4fv(earthProgram.uMVMatrix, 1, GL_FALSE,
-                           glm::value_ptr(earthMVMatrix));
-        glUniformMatrix4fv(earthProgram.uNormalMatrix, 1, GL_FALSE,
-                           glm::value_ptr(glm::transpose(glm::inverse(earthMVMatrix))));
-        glUniformMatrix4fv(earthProgram.uMVPMatrix, 1, GL_FALSE,
-                           glm::value_ptr(ProjMatrix * earthMVMatrix));
+        // glm::mat4 earthMVMatrix = glm::rotate(MVMatrix, start_time, glm::vec3(0, 1, 0));
+        // glUniformMatrix4fv(earthProgram.uMVMatrix, 1, GL_FALSE,
+        //                    glm::value_ptr(earthMVMatrix));
+        // glUniformMatrix4fv(earthProgram.uNormalMatrix, 1, GL_FALSE,
+        //                    glm::value_ptr(glm::transpose(glm::inverse(earthMVMatrix))));
+        // glUniformMatrix4fv(earthProgram.uMVPMatrix, 1, GL_FALSE,
+        //                    glm::value_ptr(ProjMatrix * earthMVMatrix));
 
-        glBindVertexArray(mesh.get_vao());
+        // glBindVertexArray(mesh.get_vao());
         // set the cloud :
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, cloud_texture.get_vto());
+        // glActiveTexture(GL_TEXTURE1);
+        // glBindTexture(GL_TEXTURE_2D, cloud_texture.get_vto());
 
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, earth_texture.get_vto());
+        // glActiveTexture(GL_TEXTURE0);
+        // glBindTexture(GL_TEXTURE_2D, earth_texture.get_vto());
 
-        glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
-        glBindTexture(GL_TEXTURE_2D, 0);
+        // glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
+        // glBindTexture(GL_TEXTURE_2D, 0);
 
         // Moon
         // set programme
         // moonProgram.m_Program.use();
         blinnPhongProgram.m_Program.use();
         // set the moon texture on the unit 1 and bind it
-        glUniform1i(blinnPhongProgram.uTexture, 0);
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, moon_texture.get_vto());
+        // glUniform1i(blinnPhongProgram.uTexture, 0);
+        // glActiveTexture(GL_TEXTURE0);
+        // glBindTexture(GL_TEXTURE_2D, moon_texture.get_vto());
 
-        for (unsigned int i = 0; i < list_axis.size() - 1; i++) {
-            auto axis      = list_axis[i];
-            auto start_pos = list_pos[i];
+        // for (unsigned int i = 0; i < list_axis.size() - 1; i++) {
+        //     auto axis      = list_axis[i];
+        //     auto start_pos = list_pos[i];
 
-            glm::mat4 mat = get_transformations(start_time, MVMatrix, axis, start_pos);
+        // glm::mat4 mat = get_transformations(start_time, MVMatrix, axis, start_pos);
 
-            blinnPhongProgram.passLight(list_light, list_dir_light, MVMatrix);
-            blinnPhongProgram.passMaterial(material);
-            blinnPhongProgram.passMatrix(mat, ProjMatrix);
+        blinnPhongProgram.passLight(list_light, list_dir_light, MVMatrix);
+        blinnPhongProgram.passMaterial(material);
+        blinnPhongProgram.passMatrix(MVMatrix, ProjMatrix);
 
-            glBindVertexArray(mesh.get_vao());
+        // glBindVertexArray(mesh.get_vao());
+        glBindVertexArray(mesh_cube.get_vao());
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh_cube.get_ibo());
 
-            glActiveTexture(GL_TEXTURE0);
-            glBindTexture(GL_TEXTURE_2D, moon_texture.get_vto());
-
-            glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
-            glBindTexture(GL_TEXTURE_2D, 0);
-        }
+        // glActiveTexture(GL_TEXTURE0);
+        // glBindTexture(GL_TEXTURE_2D, moon_texture.get_vto());
+        glDrawElements(GL_TRIANGLES, mesh_cube.get_vertex_count(), GL_UNSIGNED_INT, 0);
+        // glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
+        glBindTexture(GL_TEXTURE_2D, 0);
+        // }
 
         glBindVertexArray(0);
 
