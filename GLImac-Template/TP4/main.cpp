@@ -230,7 +230,7 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         freeCam.updateFreeCamera(delta_time, mouse, keyboard);
         // MVMatrix = trackBallCamera.getViewMatrix();
 
-        // MVMatrix = freeCam.getViewMatrix();
+        MVMatrix = freeCam.getViewMatrix();
         // std::cout << MVMatrix << "\n \n \n";
         MVPMatrix = ProjMatrix * MVMatrix;
         std::cout << MVPMatrix << "\n \n \n";
@@ -275,12 +275,12 @@ int main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
         blinnPhongProgram.passMatrix(MVMatrix, ProjMatrix);
 
         // glBindVertexArray(mesh.get_vao());
-        glBindVertexArray(mesh_cube.get_vao());
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh_cube.get_ibo());
+        glBindVertexArray(mesh.get_vao());
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh.get_ibo());
 
         // glActiveTexture(GL_TEXTURE0);
         // glBindTexture(GL_TEXTURE_2D, moon_texture.get_vto());
-        glDrawElements(GL_TRIANGLES, mesh_cube.get_vertex_count(), GL_UNSIGNED_INT, 0);
+        glDrawElements(GL_TRIANGLES, mesh.get_vertex_count(), GL_UNSIGNED_INT, 0);
         // glDrawArrays(GL_TRIANGLES, 0, mesh.get_vertex_count());
         glBindTexture(GL_TEXTURE_2D, 0);
         // }
